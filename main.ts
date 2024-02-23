@@ -1,5 +1,5 @@
 //% color="#5c7cfa" weight=10 icon="\uf06e"
-//% groups='["Basic", "Face tracking", "Color blob tracking", "Line follower","Classifier",  "Traffic sign", "Number recognition", "Letter recognition","Object tracking","WIFI"]'
+//% groups='["Basic", "Face tracking", "Face Mask", "Color blob tracking", "Line follower","Classifier",  "Traffic sign", "Number recognition", "Letter recognition","Object tracking","WIFI"]'
 //% block="TabbyVision"
 
 namespace tabbyvision {
@@ -53,6 +53,8 @@ namespace tabbyvision {
         ObjectTracking = 0x2,
         //% block=FaceTracking
         FaceTracking = 0x3,
+        //% block=FaceMask
+        FaceMask = 0x7,
         //% block=NumberRecognition
         NumberRecognition = 0x4,
         //% block=ClassifyImage
@@ -75,6 +77,8 @@ namespace tabbyvision {
         ObjectTracking = 0x2,
         //% block=FaceTracking
         FaceTracking = 0x3,
+        //% block=FaceMask
+        FaceMask = 0x7,
         //% block=NumberRecognition
         NumberRecognition = 0x4,
         //% block=ClassifyImage
@@ -215,6 +219,16 @@ namespace tabbyvision {
     }
 
     /**
+    * Mask State
+    */
+    export enum MaskState {
+        //% block="without-mask"
+        A = 0,
+        //% block="with-mask"
+        B = 1
+    }
+
+    /**
     * Result list
     */
     export enum GetResult {
@@ -264,7 +278,7 @@ namespace tabbyvision {
         return n
     }
 
-    let modelCmd: number[] = [31, 81, 82, 83, 84];
+    let modelCmd: number[] = [31, 81, 82, 83, 84, 85];
     serial.onDataReceived('\n', function () {
         let a = serial.readUntil('\n')
         if (a.charAt(0) == 'K') {
@@ -692,8 +706,30 @@ namespace tabbyvision {
     //% weight=60 group="Letter recognition"
     export function letterRecognitionGetPosition(res: GetResult): number {
         return getResultXYWH(res)
+    }    
+
+    /**
+     * Face Mask is
+     * @param maskState MaskState; eg: MaskState.0
+     */
+    //% block = "Face Mask is %maskState ?"
+    //% blockId=tabbyvision_face_mask_is
+    //% weight=40 group="Face Mask"
+    export function faceMaskIsLetter(maskState: MaskState): boolean {
+        let maskList = ["with-mask", "without-mask"]
+        return _className == maskList[maskState]
     }
 
+    /**
+    * Face Mask Get Position
+    */
+    //% block = "Face Mask get %res"
+    //% blockId=tabbyvision_face_mask_get_position
+    //% weight=60 group="Face Mask"
+    export function faceMaskGetPosition(res: GetResult): number {
+        return getResultXYWH(res)
+    }
+    
     /**
      * @param ssid SSID; eg: ssid
      * @param pass PASSWORD; eg: password
