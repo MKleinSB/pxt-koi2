@@ -451,25 +451,23 @@ namespace tabbyvision {
 
     /**
      * Audio Record
-     * @param path save path; eg: 0
      * @param name file name; eg: abc.wav
      * @param sec duration; eg: 3
      */
-    //% blockId=tabbyvision_audio_record block="record audio to %path %name sec %sec"
+    //% blockId=tabbyvision_audio_record block="record audio to  /sd/%name sec %sec"
     //% weight=99 group="Basic"
-    export function audioRecord(path: Location,name: string,sec :number): void {
-        serial.writeLine(`K61 ` + paths[path] + name +` `+sec)
+    export function audioRecord(name: string,sec :number): void {
+        serial.writeLine(`K61 ` + `/sd/` + name +` `+sec)
     }
 
     /**
      * Audio Play
-     * @param path file path; eg: 0
      * @param name file name; eg: abc.wav
      */
-    //% blockId=tabbyvision_audio_play block="play audio from %path %name"
+    //% blockId=tabbyvision_audio_play block="play audio from /sd/%name"
     //% weight=99 group="Basic"
-    export function audioPlay(path: Location, name: string): void {
-        serial.writeLine(`K62 ` + paths[path] + name)
+    export function audioPlay(name: string): void {
+        serial.writeLine(`K62 ` + `/sd/` + name)
     }
 
     /**
