@@ -450,6 +450,16 @@ namespace tabbyvision {
     }
 
     /**
+     * Audio Play
+     * @param name file name; eg: abc.wav
+     */
+    //% blockId=tabbyvision_audio_play block="play audio from /sd/%name"
+    //% weight=99 group="Basic"
+    export function audioPlay(name: string): void {
+        serial.writeLine(`K62 ` + `/sd/` + name)
+    }
+
+    /**
      * Audio Record
      * @param name file name; eg: abc.wav
      * @param sec duration; eg: 3
@@ -461,14 +471,28 @@ namespace tabbyvision {
     }
 
     /**
-     * Audio Play
-     * @param name file name; eg: abc.wav
+     * Image Save
+     * @param location path; eg: 0
+     * @param name file name; eg: abc.jpg
      */
-    //% blockId=tabbyvision_audio_play block="play audio from /sd/%name"
+    //% blockId=tabbyvision_image_save block="save img to %location %name"
     //% weight=99 group="Basic"
-    export function audioPlay(name: string): void {
-        serial.writeLine(`K62 ` + `/sd/` + name)
+    export function imageSave(location: Location, name: string): void {
+        serial.writeLine(`K2 ` + paths[location] + name)
     }
+
+    /**
+     * Image Display
+     * @param location path; eg: 0
+     * @param name file name; eg: abc.jpg
+     * @param sec duration; eg: 3
+     */
+    //% blockId=tabbyvision_image_display block="display img from %location %name sec %sec"
+    //% weight=99 group="Basic"
+    export function imageDisplay(location: Location, name: string, sec:number): void {
+        serial.writeLine(`K1 ` + paths[location] + name + ` `+sec*1000)
+    }
+    
 
     /**
      * Color Blob Tracking Set Color
