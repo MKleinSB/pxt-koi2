@@ -56,6 +56,8 @@ namespace tabbyvision {
 
 
     export enum ModelFunction {
+        //% block=NoneMode
+        NoneMode = 0x0,
         //% block=TrafficSign
         TrafficSign = 0x1,
         //% block=ObjectTracking
@@ -80,6 +82,8 @@ namespace tabbyvision {
     }
 
     export enum FullFunction {
+        //% block=NoneMode
+        NoneMode = 0x0,
         //% block=TrafficSign
         TrafficSign = 0x1,
         //% block=ObjectTracking
