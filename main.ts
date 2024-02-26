@@ -28,6 +28,14 @@ namespace tabbyvision {
         Back = 2
     }
 
+    let paths = ["/SD/","/flash/"]
+    export enum Path {
+        //% block=SD
+        SD = 0,
+        //% block=Flash
+        Falsh = 1
+    }
+
     export enum BTNCmd {
         //% block="A"
         A = 1,
@@ -642,10 +650,10 @@ namespace tabbyvision {
      * Classify Image Save
      * @param path json to save; eg: model.json
      */
-    //% blockId=tabbyvision_classify_image_save block="classify image save model to local"
+    //% blockId=tabbyvision_classify_image_save block="classify image save model to %location %path"
     //% group="Classifier" weight=35
-    export function classifyImageSave(): void {
-        let str = `K43 /flash/clsData.json`
+    export function classifyImageSave(location: Path,path: string): void {
+        let str = `K43 `+paths[location]+path
         serial.writeLine(str)
     }
 
@@ -653,10 +661,10 @@ namespace tabbyvision {
      * Classify Image Load
      * @param path json to load; eg: model.json
      */
-    //% blockId=tabbyvision_classify_image_load block="classify image load model from local"
+    //% blockId=tabbyvision_classify_image_load block="classify image load model from %location %path"
     //% group="Classifier" weight=34
-    export function classifyImageLoad(): void {
-        let str2 = `K44 /flash/clsData.json`
+    export function classifyImageLoad(location: Path, path: string): void {
+        let str2 = `K44 ` + paths[location] + path
         serial.writeLine(str2)
     }
 
