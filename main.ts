@@ -28,8 +28,8 @@ namespace tabbyvision {
         Back = 2
     }
 
-    let paths = ["/SD/","/flash/"]
-    export enum Path {
+    let paths = ["/sd/","/flash/"]
+    export enum Location {
         //% block=SD
         SD = 0,
         //% block=Flash
@@ -421,11 +421,11 @@ namespace tabbyvision {
     export function onButtonPressed(btn: BTNCmd, handler: () => void) {
         control.onEvent(koiNewEventId, btn, handler);
     }
-
+    
     /**
-     * Switch Function
-     * @param func Function; eg: LineFollower
-     */
+    * Switch Function
+    * @param func Function; eg: LineFollower
+    */
     //% blockId=tabbyvision_switch_function block="switch function %func"
     //% weight=97 group="Basic"
     //% func.fieldEditor="gridpicker"
@@ -433,6 +433,7 @@ namespace tabbyvision {
     export function switchFunction(func: FullFunction): void {
         serial.writeLine(`K97 ${func}`)
     }
+
 
     /**
      * Enable Model + CV
@@ -448,6 +449,28 @@ namespace tabbyvision {
         serial.writeLine(`K97 ${model + cv}`)
     }
 
+    /**
+     * Audio Record
+     * @param path save path; eg: 0
+     * @param name file name; eg: abc.wav
+     * @param sec duration; eg: 3
+     */
+    //% blockId=tabbyvision_audio_record block="record audio to %path %name sec %sec"
+    //% weight=99 group="Basic"
+    export function audioRecord(path: Location,name: string,sec :number): void {
+        serial.writeLine(`K61 ` + paths[path] + name +` `+sec)
+    }
+
+    /**
+     * Audio Play
+     * @param path file path; eg: 0
+     * @param name file name; eg: abc.wav
+     */
+    //% blockId=tabbyvision_audio_play block="play audio from %path %name"
+    //% weight=99 group="Basic"
+    export function audioPlay(path: Location, name: string): void {
+        serial.writeLine(`K62 ` + paths[path] + name)
+    }
 
     /**
      * Color Blob Tracking Set Color
@@ -656,7 +679,7 @@ namespace tabbyvision {
      */
     //% blockId=tabbyvision_classify_image_save block="classify image save model to %location %path"
     //% group="Classifier" weight=35
-    export function classifyImageSave(location: Path,path: string): void {
+    export function classifyImageSave(location: Location,path: string): void {
         let str = `K43 `+paths[location]+path
         serial.writeLine(str)
     }
@@ -667,7 +690,7 @@ namespace tabbyvision {
      */
     //% blockId=tabbyvision_classify_image_load block="classify image load model from %location %path"
     //% group="Classifier" weight=34
-    export function classifyImageLoad(location: Path, path: string): void {
+    export function classifyImageLoad(location: Location, path: string): void {
         let str2 = `K44 ` + paths[location] + path
         serial.writeLine(str2)
     }
