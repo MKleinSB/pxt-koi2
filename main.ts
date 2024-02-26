@@ -45,6 +45,20 @@ namespace tabbyvision {
         AB = 3
     }
 
+    let colors = ["(255,0,0)", "(0,255,0)", "(0,0,255)", "(255,255,255)", "(0,0,0)"]
+    export enum TextColor {
+        //% block="Red"
+        Red = 0,
+        //% block="Green"
+        Green = 1,
+        //% block="Blue"
+        Blue = 2,
+        //% block="White"
+        White = 3,
+        //% block="Block"
+        Block = 4,
+    }
+
     export enum ColorList {
         //% block="Red"
         Red = 0,
@@ -493,6 +507,19 @@ namespace tabbyvision {
         serial.writeLine(`K1 ` + paths[location] + name + ` `+sec*1000)
     }
     
+    /**
+     * Text display
+     * @param text show text; eg: hello
+     * @param x coord x; eg: 0
+     * @param y coord y; eg: 0
+     * @param color show color; eg: 0
+     * @param sec duration; eg: 3
+     */
+    //% blockId=tabbyvision_text_display block="display text %text x: %x y: %y color: %color sec: %sec"
+    //% weight=99 group="Basic"
+    export function textDisplay(text: string, x: number, y: number, color: TextColor, sec: number): void {
+        serial.writeLine(`K4 ${x+40} ${y} ${sec*1000} ${colors[color]} ${text}`)
+    }
 
     /**
      * Color Blob Tracking Set Color
