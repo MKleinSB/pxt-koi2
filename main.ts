@@ -10,6 +10,7 @@ namespace tabbyvision {
 
     // cached results
     let _className: string = ''
+    let _classSimilarity: { [key: string]: any } = {};
     let _posX: number = -1
     let _posY: number = -1
     let _posW: number = -1
@@ -277,7 +278,6 @@ namespace tabbyvision {
         }
         return n
     }
-
     let modelCmd: number[] = [31, 81, 82, 83, 84, 85];
     serial.onDataReceived('\n', function () {
         let a = serial.readUntil('\n')
@@ -286,7 +286,14 @@ namespace tabbyvision {
             let b = a.slice(1, a.length).split(' ')
             let cmd = parseInt(b[0])
             if (cmd == 42) { // feature extraction
-                _className = b[1]
+                try{
+                    _className = b[1]
+                    _classSimilarity = JSON.parse(b[2])
+                }catch(e){
+                    _className = ""
+                    _classSimilarity = {}
+                }
+
             } else if (cmd == 15) { // color blob tracking
                 _posX = parseInt(b[1])
                 _posY = parseInt(b[2])
@@ -616,6 +623,20 @@ namespace tabbyvision {
     export function classifyImageGetClass(): string {
         return getResultClass()
     }
+
+    /**
+     * Classify Image Get Similarity
+     * @returns class
+     */
+    //% blockId=tabbyvision_classify_image_get_similarity block="classify image get %class similarity"
+    //% weight=38 group="Classifier"
+    export function classifyImageGetSimilarity(classify: string): number {
+        let deviation = _classSimilarity[classify];
+        deviation = Math.max(0, Math.min(deviation, 5));
+        let similarity = (5 - deviation)/5*100
+        return similarity
+    }
+
 
     /**
      * Classify Image Save
