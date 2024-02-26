@@ -1,5 +1,5 @@
 //% color="#5c7cfa" weight=10 icon="\uf06e"
-//% groups='["Basic", "Face tracking", "Face Mask", "Color blob tracking", "Line follower","Classifier",  "Traffic sign", "Number recognition", "Letter recognition","Object tracking","WIFI"]'
+//% groups='["Basic", "Face tracking", "Face Mask", "Color blob tracking", "Line follower","Classifier",  "Traffic sign", "Number recognition", "Letter recognition","Object tracking","Scan Code","WIFI"]'
 //% block="TabbyVision"
 
 namespace tabbyvision {
@@ -45,6 +45,15 @@ namespace tabbyvision {
         AB = 3
     }
 
+    export enum CodeTypes {
+        //% block="qrcode"
+        A = 0,
+        //% block="barcode"
+        B = 1,
+        //% block="apriltages"
+        AB = 2
+    }
+
     let colors = ["(255,0,0)", "(0,255,0)", "(0,0,255)", "(255,255,255)", "(0,0,0)"]
     export enum TextColor {
         //% block="Red"
@@ -86,6 +95,8 @@ namespace tabbyvision {
         ClassifyImage = 0x5,
         //% block=LetterRecognition
         LetterRecognition = 0x6,
+        //% block=ScanCode
+        ScanCode = 0x100,
     }
 
     export enum CvFunction {
@@ -118,6 +129,8 @@ namespace tabbyvision {
         LineFollower = 0x20,
         //% block=Iot
         Iot = 0x80,
+        //% block=ScanCode
+        ScanCode = 0x100,
     }
 
     export enum ColorNames {
@@ -304,7 +317,7 @@ namespace tabbyvision {
         }
         return n
     }
-    let modelCmd: number[] = [31, 81, 82, 83, 84, 85];
+    let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20];
     serial.onDataReceived('\n', function () {
         let a = serial.readUntil('\n')
         if (a.charAt(0) == 'K') {
@@ -835,6 +848,37 @@ namespace tabbyvision {
         return getResultXYWH(res)
     }
     
+    /**
+    * Scan Code
+    */
+    //% block = "scan code type %codeType"
+    //% blockId=tabbyvision_scan_code_type
+    //% weight=60 group="Scan Code"
+    export function codeScanTypeSet(codeType: CodeTypes) {
+        serial.writeLine(`K21 ${codeType}`)
+    }
+
+    /**
+    * Scan Code Get Position
+    */
+    //% block = "Scan Code get %res"
+    //% blockId=tabbyvision_scan_code_position
+    //% weight=60 group="Scan Code"
+    export function codeScanPosition(res: GetResult): number {
+        return getResultXYWH(res)
+    }
+
+    /**
+    * Scan Code Get Result
+    */
+    //% block = "Scan Code get result"
+    //% blockId=tabbyvision_scan_code_result
+    //% weight=60 group="Scan Code"
+    export function codeScanResult(): string {
+        return getResultClass()
+    }
+
+
     /**
      * @param ssid SSID; eg: ssid
      * @param pass PASSWORD; eg: password
