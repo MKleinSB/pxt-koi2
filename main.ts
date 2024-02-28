@@ -11,6 +11,7 @@ namespace tabbyvision {
     // cached results
     let _className: string = ''
     let _classSimilarity: { [key: string]: any } = {};
+    let _faceAttrList: string[] = []
     let _posX: number = -1
     let _posY: number = -1
     let _posW: number = -1
@@ -86,7 +87,7 @@ namespace tabbyvision {
         //% block=ObjectTracking
         ObjectTracking = 0x2,
         //% block=FaceTracking
-        FaceTracking = 0x3,
+        FaceTracking = 0x9,
         //% block=FaceMask
         FaceMask = 0x7,
         //% block=NumberRecognition
@@ -114,7 +115,7 @@ namespace tabbyvision {
         //% block=ObjectTracking
         ObjectTracking = 0x2,
         //% block=FaceTracking
-        FaceTracking = 0x3,
+        FaceTracking = 0x9,
         //% block=FaceMask
         FaceMask = 0x7,
         //% block=NumberRecognition
@@ -306,7 +307,35 @@ namespace tabbyvision {
         result_Y2 = 4
     }
 
+    /**
+     * face attr state
+     */
+    export enum FaceAttrState {
+        //% block="smile"
+        smile = 2,
+        //% block="glasses"
+        glasses = 3,
+        //% block="openMouth"
+        openMouth = 1,
+        //% block="male"
+        male = 0,
+    }
 
+    /**
+     * face attr Quantity
+     */
+    export enum FaceAttrQuantity {
+        //% block="headcount"
+        headcount = 4,
+        //% block="smile"
+        smile = 8,
+        //% block="glasses"
+        glasses = 8,
+        //% block="openMouth"
+        openMouth = 6,
+        //% block="male"
+        male = 5,
+    }
 
 
     let btnEvent: (btn: number) => void
@@ -332,7 +361,23 @@ namespace tabbyvision {
                     _className = ""
                     _classSimilarity = {}
                 }
-
+            } else if (cmd == 34) { // face attr
+                _posX = parseInt(b[1])
+                _posY = parseInt(b[2])
+                _posW = parseInt(b[3])
+                _posH = parseInt(b[4])
+                _faceAttrList = b.slice(5)
+                // serial.writeLine(_faceAttrList[0])
+                // serial.writeLine(_faceAttrList[1])
+                // serial.writeLine(_faceAttrList[2])
+                // serial.writeLine(_faceAttrList[3])
+                // serial.writeLine(_faceAttrList[4])
+                // serial.writeLine(_faceAttrList[5])
+                // serial.writeLine(_faceAttrList[6])
+                // serial.writeLine(_faceAttrList[7])
+                // serial.writeLine(_faceAttrList[8])
+                // serial.writeLine(_faceAttrList[9])
+                // serial.writeLine("------------------")
             } else if (cmd == 15) { // color blob tracking
                 _posX = parseInt(b[1])
                 _posY = parseInt(b[2])
@@ -650,12 +695,22 @@ namespace tabbyvision {
     //% block = "face tracking get quantity"
     //% blockId=tabbyvision_face_tracking_get_quantity
     //% weight=60 group="Face tracking"
-    export function faceTrackingGetQuantity(): number {
-        let transfer = _className
-        if (transfer == "") {
-            return 0
-        }
-        return parseInt(transfer)
+    export function faceTrackingGetQuantity(qunantityType:FaceAttrQuantity): number {
+        let qunantity = _faceAttrList[qunantityType]
+        _faceAttrList[qunantityType] = "-1"
+        return parseInt(qunantity)
+    }
+
+    /**
+    * Face Tracking Get State
+    */
+    //% block = "face tracking get State"
+    //% blockId=tabbyvision_face_tracking_get_state
+    //% weight=60 group="Face tracking"
+    export function faceTrackingGetState(stateType: FaceAttrState): boolean {
+        let state = _faceAttrList[stateType]
+        _faceAttrList[stateType] = "-1"
+        return parseInt(state) == 1
     }
 
     /**
