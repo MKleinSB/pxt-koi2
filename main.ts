@@ -356,7 +356,11 @@ namespace koi2 {
             if (cmd == 42) { // feature extraction
                 try{
                     _className = b[1]
-                    _classSimilarity = JSON.parse(b[2])
+                    let result = ""
+                    for (let i = 2; i < b.length; i++) {
+                        result += b[i]
+                    }
+                    _classSimilarity = JSON.parse(result)
                 }catch(e){
                     _className = ""
                     _classSimilarity = {}
@@ -772,6 +776,9 @@ namespace koi2 {
     //% blockId=koi2_classify_image_get_similarity block="classify image get %class similarity"
     //% weight=38 group="Classifier"
     export function classifyImageGetSimilarity(classify: string): number {
+        serial.writeLine("--------")
+        serial.writeLine(classify)
+        serial.writeLine("xxxxxxxx")
         let deviation = _classSimilarity[classify];
         deviation = Math.max(0, Math.min(deviation, 5));
         let similarity = (5 - deviation)/5*100
