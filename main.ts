@@ -53,6 +53,13 @@ namespace koi2 {
         B = 1,
     }
 
+    export enum IOTSwitch {
+        //% block="OFF"
+        OFF = 0,
+        //% block="ON"
+        ON = 0x80,
+    }
+
     let colors = ["255,0,0", "0,255,0", "0,0,255", "255,255,255", "0,0,0"]
     export enum TextColor {
         //% block="Red"
@@ -126,8 +133,6 @@ namespace koi2 {
         ColorBlobTracking = 0x10,
         //% block=LineFollower
         LineFollower = 0x20,
-        //% block=Iot
-        Iot = 0x80,
         //% block=ScanCode
         ScanCode = 0x100,
     }
@@ -487,14 +492,15 @@ namespace koi2 {
     
     /**
     * Switch Function
-    * @param func Function; eg: LineFollower
+    * @param func Function; eg: NoneMode
+    * @param iotSwitch switch; eg: OFF
     */
-    //% blockId=koi2_switch_function block="switch function %func"
+    //% blockId=koi2_switch_function block="switch function %func iot %iotSwitch"
     //% weight=97 group="Basic"
     //% func.fieldEditor="gridpicker"
     //% func.fieldOptions.columns=3
-    export function switchFunction(func: FullFunction): void {
-        serial.writeLine(`K97 ${func}`)
+    export function switchFunction(func: FullFunction, iotSwitch: IOTSwitch): void {
+        serial.writeLine(`K97 ${func + iotSwitch}`)
     }
 
 
