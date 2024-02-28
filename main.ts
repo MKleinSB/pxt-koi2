@@ -525,7 +525,7 @@ namespace koi2 {
      * @param name file name; eg: abc.wav
      * @param sec duration; eg: 3
      */
-    //% blockId=koi2_audio_record block="record audio to  /sd/%name sec %sec"
+    //% blockId=koi2_audio_record block="record audio to /sd/%name sec %sec"
     //% weight=99 group="Basic"
     export function audioRecord(name: string,sec :number): void {
         serial.writeLine(`K61 ` + `/sd/` + name +` `+sec)
