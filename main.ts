@@ -51,8 +51,6 @@ namespace koi2 {
         A = 0,
         //% block="barcode"
         B = 1,
-        //% block="apriltages"
-        AB = 2
     }
 
     let colors = ["255,0,0", "0,255,0", "0,0,255", "255,255,255", "0,0,0"]
