@@ -1,5 +1,5 @@
 //% color="#5c7cfa" weight=10 icon="\u03f0"
-//% groups='["Basic", "Face tracking", "Face Mask", "Color blob tracking", "Line follower","Classifier",  "Traffic sign", "Number recognition", "Letter recognition","Object tracking","Scan Code","WIFI"]'
+//% groups='["Basic", "Face tracking", "Face Mask", "Color blob tracking", "Line follower","Classifier",  "Traffic sign", "Number recognition", "Letter recognition","Object tracking","Scan Code","Custom","WIFI"]'
 //% block="koi2"
 
 namespace koi2 {
@@ -95,6 +95,8 @@ namespace koi2 {
         FaceTracking = 0x9,
         //% block=FaceMask
         FaceMask = 0x7,
+        //% block=CustomModel
+        CustomModel = 0x3,
         //% block=NumberRecognition
         NumberRecognition = 0x4,
         //% block=ClassifyImage
@@ -123,6 +125,8 @@ namespace koi2 {
         FaceTracking = 0x9,
         //% block=FaceMask
         FaceMask = 0x7,
+        //% block=CustomModel
+        CustomModel = 0x3,
         //% block=NumberRecognition
         NumberRecognition = 0x4,
         //% block=ClassifyImage
@@ -349,7 +353,7 @@ namespace koi2 {
         }
         return n
     }
-    let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20];
+    let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20, 86];
     serial.onDataReceived('\n', function () {
         let a = serial.readUntil('\n')
         if (a.charAt(0) == 'K') {
@@ -933,6 +937,63 @@ namespace koi2 {
         return getResultClass()
     }
 
+    /**
+     * Custom Model Init SDCard
+     * @param modelAddr path; eg: /sd/ballRGB.kmodel
+     */
+    //% blockId=koi2_custom_model_init_sd block="from sdCard load model %modelAddr anchor is %anchor"
+    //% weight=99 group="Custom"
+    export function custmoModelInitfromSD(modelAddr: string, anchor: number[]): void {
+        let anchorStr = ""
+        for(let i=0;i<anchor.length;i++){
+            anchorStr +=anchor[i].toString()
+            if(i != anchor.length-1){
+                anchorStr+=","
+            }
+        }
+        serial.writeLine(`K87 1 ${modelAddr} ${anchorStr}`)
+    }
+
+    /**
+     * Custom Model Init koi2
+     * @param modelAddr path; eg: 0xa20000
+     */
+    //% blockId=koi2_custom_model_init_koi2 block="from koi2 load model %modelAddr anchor is %anchor"
+    //% weight=99 group="Custom"
+    export function custmoModelInitfromKoi2(modelAddr: number, anchor: number[]): void {
+        let anchorStr = ""
+        for (let i = 0; i < anchor.length; i++) {
+            anchorStr += anchor[i].toString()
+            if (i != anchor.length - 1) {
+                anchorStr += ","
+            }
+        }
+        serial.writeLine(`K87 0 ${modelAddr} ${anchorStr}`)
+    }
+
+    /**
+    * Custom Model Get Position
+    */
+    //% block = "custom model get %res"
+    //% blockId=koi2_custom_model_get_position
+    //% weight=60 group="Custom"
+    export function customModelGetPosition(res: GetResult): number {
+        return getResultXYWH(res)
+    }
+
+    /**
+     * Custom Model Get id
+     */
+    //% block = "custom model get id "
+    //% blockId=koi2_custom_model_get_number
+    //% weight=30 group="Custom"
+    export function customModelGetId(): number {
+        let id = _className
+        if (id == '-1') {
+            return -1
+        }
+        return parseInt(id)
+    }
 
     /**
      * @param ssid SSID; eg: ssid
