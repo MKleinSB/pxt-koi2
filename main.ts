@@ -29,12 +29,12 @@ namespace koi2 {
         Back = 2
     }
 
-    let paths = ["/sd/","/flash/"]
+    let paths = ["/flash/", "/sd/"]
     export enum Location {
-        //% block=SD
-        SD = 0,
         //% block=Flash
-        Falsh = 1
+        Falsh = 0,
+        //% block=SD
+        SD = 1
     }
 
     export enum BTNCmd {
@@ -465,7 +465,7 @@ namespace koi2 {
      * @param rx Rx pin; eg: SerialPin.P12 
      */
     //% blockId=koi2_init block="KOI2 init Tx %tx Rx %rx"
-    //% weight=100 group="Basic"
+    //% weight=101 group="Basic"
     export function init(tx: SerialPin, rx: SerialPin): void {
         serial.redirect(tx, rx, BaudRate.BaudRate115200);
         serial.setTxBufferSize(64)
@@ -500,7 +500,7 @@ namespace koi2 {
     * @param iotSwitch switch; eg: OFF
     */
     //% blockId=koi2_switch_function block="switch function %func iot %iotSwitch"
-    //% weight=97 group="Basic"
+    //% weight=100 group="Basic"
     //% func.fieldEditor="gridpicker"
     //% func.fieldOptions.columns=3
     export function switchFunction(func: FullFunction, iotSwitch: IOTSwitch): void {
