@@ -10,7 +10,8 @@
     "files": [
         "README.md",
         "main.blocks",
-        "main.ts"
+        "main.ts",
+        "_locales/zh-cn/koi2-strings.json"
     ],
     "testFiles": [
         "test.ts"
