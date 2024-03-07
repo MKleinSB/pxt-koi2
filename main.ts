@@ -21,6 +21,19 @@ namespace koi2 {
     let _lineX2: number = -1
     let _lineY2: number = -1
 
+    const PortSerial = [
+        [SerialPin.P0, SerialPin.P8],
+        [SerialPin.P1, SerialPin.P12],
+        [SerialPin.P2, SerialPin.P13],
+        [SerialPin.P14, SerialPin.P15],
+    ]
+
+    export enum SerialPorts {
+        PORT1 = 0,
+        PORT2 = 1,
+        PORT3 = 2,
+        PORT4 = 3,
+    }
 
     export enum LCD_Direction {
         //% block=Front
@@ -464,6 +477,15 @@ namespace koi2 {
         return ret4
     }
 
+    //% blockId=koi2_init_pw block="KOI2 init powerbrick|Port %port"
+    //% group="Basic" weight=101
+    export function koi2_init_pw(port: SerialPorts): void {
+        serial.redirect(PortSerial[port][0], PortSerial[port][1], BaudRate.BaudRate115200);
+        serial.setTxBufferSize(64)
+        serial.setRxBufferSize(64)
+        serial.readString()
+        serial.writeString('\n\n')
+    }
 
     /**
      * Init the koi2 library with serial connection
@@ -472,7 +494,7 @@ namespace koi2 {
      */
     //% blockId=koi2_init block="KOI2 init Tx %tx Rx %rx"
     //% weight=101 group="Basic"
-    export function init(tx: SerialPin, rx: SerialPin): void {
+    export function koi2_init(tx: SerialPin, rx: SerialPin): void {
         serial.redirect(tx, rx, BaudRate.BaudRate115200);
         serial.setTxBufferSize(64)
         serial.setRxBufferSize(64)
