@@ -354,8 +354,14 @@ namespace koi2 {
         return n
     }
     let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20, 86];
-    serial.onDataReceived('\n', function () {
+    /**
+     * koi2 update date
+     */
+    //% blockId=koi2_updateData block="koi2 update date"
+    //% weight=97 group="Basic"
+    export function koi2UpdateData(): void {
         let a = serial.readUntil('\n')
+        serial.writeString(a)
         if (a.charAt(0) == 'K') {
             a = trim(a)
             let b = a.slice(1, a.length).split(' ')
@@ -402,7 +408,7 @@ namespace koi2 {
                 }
             }
         }
-    })
+    }
 
     function getResultXYWH(res: GetResult): number {
         let ret = -1
