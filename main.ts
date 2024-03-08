@@ -615,7 +615,7 @@ namespace koi2 {
     //% blockId=koi2_color_blob_tracking_set_color block="color blob tracking set color %color"
     //% color.shadow="colorNumberPicker"
     //% weight=90 group="Color blob tracking"
-    export function colorObjectTrackingSetColor(color: ColorList): void {
+    export function colorTrackingSetColor(color: ColorList): void {
         serial.writeLine(`K18 ${color}`)
     }
 
@@ -624,21 +624,16 @@ namespace koi2 {
      */
     //% blockId=koi2_color_blob_tracking_calibrate block="color blob tracking calibrate"
     //% weight=90 group="Color blob tracking"
-    export function colorObjectTrackingCalibrate(): void {
+    export function colorTrackingCalibrate(): void {
         serial.writeLine(`K16`)
     }
 
     /**
      * Color Blob Tracking Get Result
-     * @param res for color; eg: GetResult.result_X
      */
-    //% block = "color blob tracking get result %res"
-    //% blockId=koi2_color_blob_tracking_get_result
+    //% blockId=colorTrackingGetPosition block = "color blob tracking get result %res"
     //% weight=89 group="Color blob tracking"
-    //% res.fieldEditor="gridpicker"
-    //% res.fieldOptions.columns=4
-
-    export function colorObjectTrackingGetPosition(res: GetResult): number {
+    export function colorTrackingGetPosition(res: GetResult): number {
         return getResultXYWH(res)
     }
 
@@ -712,7 +707,7 @@ namespace koi2 {
     * Face Tracking Get Position 
     */
     //% block = "face tracking get %res"
-    //% blockId=koi2_face_tracking_get_position
+    //% blockId=faceTrackingGetPosition
     //% weight=60 group="Face tracking"
     export function faceTrackingGetPosition(res: GetResult): number {
         return getResultXYWH(res)
@@ -733,8 +728,8 @@ namespace koi2 {
     /**
     * Face Tracking Get State
     */
-    //% block = "face tracking get State"
-    //% blockId=koi2_face_tracking_get_state
+    //% block = "face tracking get state %stateType"
+    //% blockId=faceTrackingGetState
     //% weight=60 group="Face tracking"
     export function faceTrackingGetState(stateType: FaceAttrState): boolean {
         let state = _faceAttrList[stateType]
