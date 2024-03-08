@@ -52,5 +52,5 @@
     "koi2.koi2_mqtt_sub|block": "iot 订阅话题 %topic",
     "koi2.koi2_mqtt_pub|block": "iot 向话题 %topic 发送消息 %data",
     "koi2.koi2_mqtt_read|block": "iot 读取话题 %topic 的消息",
-    "koi2.koi2_mqtt_onread|block": "iot 当收到话题 %topic 的消息时"
+    "koi2.koi2_mqtt_onread|block": "iot 当收到话题 %data|%topic"
 }

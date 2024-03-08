@@ -631,7 +631,7 @@ namespace koi2 {
     /**
      * Color Blob Tracking Get Result
      */
-    //% blockId=colorTrackingGetPosition block = "color blob tracking get result %res"
+    //% blockId=colorTrackingGetPosition block="color blob tracking get result %res"
     //% weight=89 group="Color blob tracking"
     export function colorTrackingGetPosition(res: GetResult): number {
         return getResultXYWH(res)
@@ -706,7 +706,7 @@ namespace koi2 {
     /**
     * Face Tracking Get Position 
     */
-    //% block = "face tracking get %res"
+    //% block="face tracking get %res"
     //% blockId=faceTrackingGetPosition
     //% weight=60 group="Face tracking"
     export function faceTrackingGetPosition(res: GetResult): number {
@@ -716,7 +716,7 @@ namespace koi2 {
     /**
     * Face Tracking Get Quantity
     */
-    //% block = "face tracking get quantity"
+    //% block="face tracking get quantity"
     //% blockId=koi2_face_tracking_get_quantity
     //% weight=60 group="Face tracking"
     export function faceTrackingGetQuantity(qunantityType:FaceAttrQuantity): number {
@@ -728,7 +728,7 @@ namespace koi2 {
     /**
     * Face Tracking Get State
     */
-    //% block = "face tracking get state %stateType"
+    //% block="face tracking get state %stateType"
     //% blockId=faceTrackingGetState
     //% weight=60 group="Face tracking"
     export function faceTrackingGetState(stateType: FaceAttrState): boolean {
@@ -844,7 +844,7 @@ namespace koi2 {
      * Number Recognition is Number
      * @param number NumberCard; eg: NumberCard.6
      */
-    //% block = "number recognition number is %number"
+    //% block="number recognition number is %number"
     //% blockId=koi2_number_recognition_is_number 
     //% weight=30 group="Number recognition"
     export function numberRecognitionIsNumber(num: NumberCard): boolean {
@@ -854,7 +854,7 @@ namespace koi2 {
     /**
      * Number Recognition Get Number
      */
-    //% block = "number recognition get number "
+    //% block="number recognition get number "
     //% blockId=koi2_number_recognition_get_number 
     //% weight=30 group="Number recognition"
     export function numberRecognitionGetNumber(): number {
@@ -868,7 +868,7 @@ namespace koi2 {
     /**
     * Number Recognition Get Position
     */
-    //% block = "number recognition get %res"
+    //% block="number recognition get %res"
     //% blockId=koi2_number_recognition_get_position
     //% weight=60 group="Number recognition"
     export function numberRecognitionGetPosition(res: GetResult): number {
@@ -880,7 +880,7 @@ namespace koi2 {
      * Letter Recognition is Letter
      * @param letter LetterCard; eg: LetterCard.6
      */
-    //% block = "letter recognition letter is %letter ?"
+    //% block="letter recognition letter is %letter ?"
     //% blockId=koi2_letter_recognition_is_letter 
     //% weight=30 group="Letter recognition"
     export function letterRecognitionIsLetter(letter: LetterCard): boolean {
@@ -891,7 +891,7 @@ namespace koi2 {
     /**
      * Letter Recognition Get Letter
      */
-    //% block = "letter recognition get letter "
+    //% block="letter recognition get letter "
     //% blockId=koi2_letter_recognition_get_letter 
     //% weight=30 group="Letter recognition"
     export function letterRecognitionGetLetter(): string {
@@ -901,7 +901,7 @@ namespace koi2 {
     /**
     * Letter Recognition Get Position
     */
-    //% block = "letter recognition get %res"
+    //% block="letter recognition get %res"
     //% blockId=koi2_letter_recognition_get_position
     //% weight=60 group="Letter recognition"
     export function letterRecognitionGetPosition(res: GetResult): number {
@@ -912,7 +912,7 @@ namespace koi2 {
      * Face Mask is
      * @param maskState MaskState; eg: MaskState.0
      */
-    //% block = "Face Mask is %maskState ?"
+    //% block="Face Mask is %maskState ?"
     //% blockId=koi2_face_mask_is
     //% weight=40 group="Face Mask"
     export function faceMaskIsLetter(maskState: MaskState): boolean {
@@ -923,7 +923,7 @@ namespace koi2 {
     /**
     * Face Mask Get Position
     */
-    //% block = "Face Mask get %res"
+    //% block="Face Mask get %res"
     //% blockId=koi2_face_mask_get_position
     //% weight=60 group="Face Mask"
     export function faceMaskGetPosition(res: GetResult): number {
@@ -933,7 +933,7 @@ namespace koi2 {
     /**
     * Scan Code
     */
-    //% block = "scan code type %codeType"
+    //% block="scan code type %codeType"
     //% blockId=koi2_scan_code_type
     //% weight=60 group="Scan Code"
     export function codeScanTypeSet(codeType: CodeTypes) {
@@ -943,7 +943,7 @@ namespace koi2 {
     /**
     * Scan Code Get Position
     */
-    //% block = "Scan Code get %res"
+    //% block="Scan Code get %res"
     //% blockId=koi2_scan_code_position
     //% weight=60 group="Scan Code"
     export function codeScanPosition(res: GetResult): number {
@@ -953,7 +953,7 @@ namespace koi2 {
     /**
     * Scan Code Get Result
     */
-    //% block = "Scan Code get result"
+    //% block="Scan Code get result"
     //% blockId=koi2_scan_code_result
     //% weight=60 group="Scan Code"
     export function codeScanResult(): string {
@@ -968,9 +968,9 @@ namespace koi2 {
     //% weight=99 group="Custom"
     export function custmoModelInitfromSD(modelAddr: string, anchor: number[]): void {
         let anchorStr = ""
-        for(let i=0;i<anchor.length;i++){
-            anchorStr +=anchor[i].toString()
-            if(i != anchor.length-1){
+        for(let j=0;j<anchor.length;j++){
+            anchorStr +=anchor[j].toString()
+            if(j != anchor.length-1){
                 anchorStr+=","
             }
         }
@@ -984,20 +984,20 @@ namespace koi2 {
     //% blockId=koi2_custom_model_init_koi2 block="from koi2 load model %modelAddr anchor is %anchor"
     //% weight=99 group="Custom"
     export function custmoModelInitfromKoi2(modelAddr: number, anchor: number[]): void {
-        let anchorStr = ""
-        for (let i = 0; i < anchor.length; i++) {
-            anchorStr += anchor[i].toString()
-            if (i != anchor.length - 1) {
-                anchorStr += ","
+        let anchorStr2 = ""
+        for (let k = 0; k < anchor.length; k++) {
+            anchorStr2 += anchor[k].toString()
+            if (k != anchor.length - 1) {
+                anchorStr2 += ","
             }
         }
-        serial.writeLine(`K87 0 ${modelAddr} ${anchorStr}`)
+        serial.writeLine(`K87 0 ${modelAddr} ${anchorStr2}`)
     }
 
     /**
     * Custom Model Get Position
     */
-    //% block = "custom model get %res"
+    //% block="custom model get %res"
     //% blockId=koi2_custom_model_get_position
     //% weight=60 group="Custom"
     export function customModelGetPosition(res: GetResult): number {
@@ -1007,7 +1007,7 @@ namespace koi2 {
     /**
      * Custom Model Get id
      */
-    //% block = "custom model get id "
+    //% block="custom model get id "
     //% blockId=koi2_custom_model_get_number
     //% weight=30 group="Custom"
     export function customModelGetId(): number {
@@ -1086,7 +1086,7 @@ namespace koi2 {
 
     }
 
-    //% blockId=koi2_mqtt_onread block="on Mqtt Data"
+    //% blockId=koi2_mqtt_onread block="on mqtt message %data %topic"
     //% group="WIFI" weight=42 draggableParameters=reporter
     export function koi2_mqtt_onread(
         handler: (data: string, topic: string) => void
