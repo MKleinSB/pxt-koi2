@@ -18,14 +18,14 @@
     "koi2.trafficSignGetClass|block": "路牌识别 返回路牌名称",
     "koi2.trafficSignGetPosition|block": "路牌识别 获取位置信息 %res",
     "koi2.lineFollowerCalibration|block": "线条追踪 校准自定义颜色",
-    "koi2.lineFollowerSetThreshold|block": "线条追踪 设置目标颜色 %color",
+    "koi2.lineFollowerSetThreshold|block": "线条追踪 设置目标颜色 %key",
     "koi2.lineFollowerGetPosition|block": "线条追踪 获取位置信息 %res",
     "koi2.faceTrackingGetPosition|block": "人脸追踪 获取位置信息 %res",
     "koi2.faceTrackingGetQuantity|block": "人脸追踪 获取 %qunantityType 数量信息",
     "koi2.faceTrackingGetState|block": "人脸追踪 人脸状态是否为 %stateType",
     "koi2.objectTrackingIsClass|block": "物体识别 物体类型为 %object",
     "koi2.objectTrackingGetClass|block": "物体识别 返回物体名称",
-    "koi2.objectTrackingGetPosition|block": "物体识别 获取位置信息 %res",
+    "koi2.objectTrackingGetPosition|block": "物体识别 获取位置信息 %axis",
     "koi2.classifyImageReset|block": "特征分类 清空学习数据",
     "koi2.classifyImageAddTagID|block": "特征分类 添加分类 %name",
     "koi2.classifyImageGetClass|block": "特征分类 获取类别",
@@ -38,7 +38,7 @@
     "koi2.letterRecognitionIsLetter|block": "字母识别 字母是否为 %letter",
     "koi2.letterRecognitionGetLetter|block": "字母识别 获取字母",
     "koi2.letterRecognitionGetPosition|block": "字母识别 获取位置信息 %res",
-    "koi2.faceMaskIsLetter|block": "口罩识别 主要角色是否 maskState%",
+    "koi2.faceMaskIsLetter|block": "口罩识别 主要角色是否 %maskState",
     "koi2.faceMaskGetPosition|block": "口罩识别 获取位置信息 %res",
     "koi2.codeScanTypeSet|block": "扫码 设置码类型 %codeType",
     "koi2.codeScanPosition|block": "扫码 获取位置信息 %res",
@@ -52,5 +52,5 @@
     "koi2.koi2_mqtt_sub|block": "iot 订阅话题 %topic",
     "koi2.koi2_mqtt_pub|block": "iot 向话题 %topic 发送消息 %data",
     "koi2.koi2_mqtt_read|block": "iot 读取话题 %topic 的消息",
-    "koi2.koi2_mqtt_onread|block": "iot 当收到话题 %data|%topic"
+    "koi2.koi2_mqtt_onread|block": "iot 当收到话题消息"
 }

@@ -687,7 +687,7 @@ namespace koi2 {
      * Line Follower Set Key Color
      * @param color
      */
-    //% blockId=koi2_line_follower_set_threshold block="line follower set threshold %threshold"
+    //% blockId=koi2_line_follower_set_threshold block="line follower set threshold %key"
     //% weight=71 group="Line follower"
     export function lineFollowerSetThreshold(key: ColorNames) {
         serial.writeLine(`K18 ${key}`)
@@ -716,7 +716,7 @@ namespace koi2 {
     /**
     * Face Tracking Get Quantity
     */
-    //% block="face tracking get quantity"
+    //% block="face tracking get %qunantityType quantity"
     //% blockId=koi2_face_tracking_get_quantity
     //% weight=60 group="Face tracking"
     export function faceTrackingGetQuantity(qunantityType:FaceAttrQuantity): number {
@@ -1086,7 +1086,7 @@ namespace koi2 {
 
     }
 
-    //% blockId=koi2_mqtt_onread block="on mqtt message %data %topic"
+    //% blockId=koi2_mqtt_onread block="on mqtt message"
     //% group="WIFI" weight=42 draggableParameters=reporter
     export function koi2_mqtt_onread(
         handler: (data: string, topic: string) => void
