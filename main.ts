@@ -373,8 +373,7 @@ namespace koi2 {
     //% blockId=koi2_updateData block="koi2 update date"
     //% weight=97 group="Basic"
     export function koi2UpdateData(): void {
-        let a = serial.readUntil('\n')
-        serial.writeString(a)
+        let a = serial.readLine()
         if (a.charAt(0) == 'K') {
             a = trim(a)
             let b = a.slice(1, a.length).split(' ')
