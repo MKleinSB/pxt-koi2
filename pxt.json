@@ -12,7 +12,8 @@
         "main.blocks",
         "main.ts",
         "_locales/zh-CN/README.md",
-        "_locales/zh-CN/koi2-strings.json"
+        "_locales/zh-CN/koi2-strings.json",
+        "_locales/zh-TW/koi2-strings.json"
     ],
     "testFiles": [
         "test.ts"
