@@ -368,9 +368,9 @@ namespace koi2 {
     }
     let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20, 86];
     /**
-     * koi2 update date
+     * koi2 update data
      */
-    //% blockId=koi2_updateData block="koi2 update date"
+    //% blockId=koi2_updateData block="koi2 update data"
     //% weight=97 group="Basic"
     export function koi2UpdateData(): void {
         let a = serial.readLine()
