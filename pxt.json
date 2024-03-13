@@ -5,7 +5,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "sugar": "github:kittenbot/pxt-sugar#v0.3.3"
     },
     "files": [
         "README.md",

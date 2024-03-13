@@ -7,7 +7,6 @@ namespace koi2 {
     let koiNewEventId = 1228
     type Evtss = (t1: string, t2: string) => void
     let mqttDataEvt: Evtss = null
-
     // cached results
     let _className: string = ''
     let _classSimilarity: { [key: string]: any } = {};
@@ -27,7 +26,7 @@ namespace koi2 {
         [SerialPin.P2, SerialPin.P13],
         [SerialPin.P14, SerialPin.P15],
     ]
-
+    
     export enum SerialPorts {
         PORT1 = 0,
         PORT2 = 1,
@@ -366,12 +365,13 @@ namespace koi2 {
         }
         return n
     }
+
     let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20, 86];
     /**
      * koi2 update data
      */
     //% blockId=koi2_updateData block="koi2 update data"
-    //% weight=97 group="Basic"
+    //% weight=100 group="Basic"
     export function koi2UpdateData(): void {
         let a = serial.readLine()
         if (a.charAt(0) == 'K') {
@@ -420,6 +420,19 @@ namespace koi2 {
                 }
             }
         }
+    }
+
+    /**
+    * Switch Function
+    * @param func Function; eg: NoneMode
+    * @param iotSwitch switch; eg: OFF
+    */
+    //% blockId=koi2_switch_function block="switch function %func iot %iotSwitch"
+    //% weight=100 group="Basic"
+    //% func.fieldEditor="gridpicker"
+    //% func.fieldOptions.columns=3
+    export function switchFunction(func: FullFunction, iotSwitch: IOTSwitch): void {
+        serial.writeLine(`K97 ${func + iotSwitch}`)
     }
 
     function getResultXYWH(res: GetResult): number {
@@ -519,19 +532,6 @@ namespace koi2 {
     //% weight=98 group="Basic"
     export function onButtonPressed(btn: BTNCmd, handler: () => void) {
         control.onEvent(koiNewEventId, btn, handler);
-    }
-    
-    /**
-    * Switch Function
-    * @param func Function; eg: NoneMode
-    * @param iotSwitch switch; eg: OFF
-    */
-    //% blockId=koi2_switch_function block="switch function %func iot %iotSwitch"
-    //% weight=100 group="Basic"
-    //% func.fieldEditor="gridpicker"
-    //% func.fieldOptions.columns=3
-    export function switchFunction(func: FullFunction, iotSwitch: IOTSwitch): void {
-        serial.writeLine(`K97 ${func + iotSwitch}`)
     }
 
 
@@ -806,9 +806,6 @@ namespace koi2 {
     //% blockId=koi2_classify_image_get_similarity block="classify image get %class similarity"
     //% weight=38 group="Classifier"
     export function classifyImageGetSimilarity(classify: string): number {
-        serial.writeLine("--------")
-        serial.writeLine(classify)
-        serial.writeLine("xxxxxxxx")
         let deviation = _classSimilarity[classify];
         deviation = Math.max(0, Math.min(deviation, 5));
         let similarity = (5 - deviation)/5*100
