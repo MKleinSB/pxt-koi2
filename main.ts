@@ -387,7 +387,6 @@ namespace koi2 {
                     }
                     _classSimilarity = JSON.parse(result)
                 }catch(e){
-                    _className = ""
                     _classSimilarity = {}
                 }
             } else if (cmd == 34) { // face attr
