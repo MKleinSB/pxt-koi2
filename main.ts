@@ -9,7 +9,9 @@ namespace koi2 {
     let mqttDataEvt: Evtss = null
     // cached results
     let _className: string = ''
-    let _classSimilarity: { [key: string]: any } = {};
+    let _classTarget:string = ''
+    let _classTargetMain: boolean = true
+    let _classSimilarity:number = 0
     let _faceAttrList: string[] = []
     let _posX: number = -1
     let _posY: number = -1
@@ -380,14 +382,16 @@ namespace koi2 {
             let cmd = parseInt(b[0])
             if (cmd == 42) { // feature extraction
                 try{
-                    _className = b[1]
-                    let result = ""
-                    for (let i = 2; i < b.length; i++) {
-                        result += b[i]
+                    if (_classTarget == b[1] || _classTargetMain){
+                        _className = b[1]
+                        let result = ""
+                        for (let i = 2; i < b.length; i++) {
+                            result += b[i]
+                        }
+                        _classSimilarity = parseInt(b[2])
                     }
-                    _classSimilarity = JSON.parse(result)
                 }catch(e){
-                    _classSimilarity = {}
+                    
                 }
             } else if (cmd == 34) { // face attr
                 _posX = parseInt(b[1])
@@ -779,6 +783,28 @@ namespace koi2 {
     }
 
     /**
+     * Classify Image set target
+     * @param name tag; eg: apple
+     */
+    //% blockId=koi2_classify_image_set_detection_target block="classify image Set detection target %name"
+    //% weight=39 group="Classifier"
+    export function classifyImageSetTarget(name: string): void {
+        _classTarget = name
+        _classTargetMain = false
+        serial.writeLine(`K42 ${name}`)
+    }
+
+    /**
+     * Classify Image get most similar
+     */
+    //% blockId=koi2_classify_image_get_most_similar block="classify image get most similar "
+    //% weight=39 group="Classifier"
+    export function classifyImageGetMostSimilar(): void {
+        _classTargetMain = true
+        serial.writeLine(`K42`)
+    }
+
+    /**
      * Classify Image Add Tag
      * @param name tag; eg: apple
      */
@@ -802,10 +828,10 @@ namespace koi2 {
      * Classify Image Get Similarity
      * @returns class
      */
-    //% blockId=koi2_classify_image_get_similarity block="classify image get %class similarity"
+    //% blockId=koi2_classify_image_get_similarity block="classify image get similarity"
     //% weight=38 group="Classifier"
-    export function classifyImageGetSimilarity(classify: string): number {
-        let deviation = _classSimilarity[classify];
+    export function classifyImageGetSimilarity(): number {
+        let deviation = _classSimilarity
         deviation = Math.max(0, Math.min(deviation, 5));
         let similarity = (5 - deviation)/5*100
         return similarity
