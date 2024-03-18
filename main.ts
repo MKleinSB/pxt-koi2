@@ -46,7 +46,7 @@ namespace koi2 {
     let paths = ["/flash/", "/sd/"]
     export enum Location {
         //% block=Flash
-        Falsh = 0,
+        Flash = 0,
         //% block=SD
         SD = 1
     }
