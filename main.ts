@@ -787,7 +787,7 @@ namespace koi2 {
      * @param name tag; eg: apple
      */
     //% blockId=koi2_classify_image_set_detection_target block="classify image Set detection target %name"
-    //% weight=39 group="Classifier"
+    //% weight=30 group="Classifier"
     export function classifyImageSetTarget(name: string): void {
         _classTarget = name
         _classTargetMain = false
@@ -798,7 +798,7 @@ namespace koi2 {
      * Classify Image get most similar
      */
     //% blockId=koi2_classify_image_get_most_similar block="classify image get most similar "
-    //% weight=39 group="Classifier"
+    //% weight=30 group="Classifier"
     export function classifyImageGetMostSimilar(): void {
         _classTargetMain = true
         serial.writeLine(`K42`)
@@ -829,7 +829,7 @@ namespace koi2 {
      * @returns class
      */
     //% blockId=koi2_classify_image_get_similarity block="classify image get similarity"
-    //% weight=38 group="Classifier"
+    //% weight=29 group="Classifier"
     export function classifyImageGetSimilarity(): number {
         let deviation = _classSimilarity
         deviation = Math.max(0, Math.min(deviation, 5));
