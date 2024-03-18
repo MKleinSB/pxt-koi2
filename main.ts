@@ -718,13 +718,13 @@ namespace koi2 {
     /**
     * Face Tracking Get Quantity
     */
-    //% block="face tracking get %qunantityType quantity"
+    //% block="face tracking get %quantityType quantity"
     //% blockId=koi2_face_tracking_get_quantity
     //% weight=60 group="Face tracking"
-    export function faceTrackingGetQuantity(qunantityType:FaceAttrQuantity): number {
-        let qunantity = _faceAttrList[qunantityType]
-        _faceAttrList[qunantityType] = "-1"
-        return parseInt(qunantity)
+    export function faceTrackingGetQuantity(quantityType:FaceAttrQuantity): number {
+        let quantity = _faceAttrList[quantityType]
+        _faceAttrList[quantityType] = "-1"
+        return parseInt(quantity)
     }
 
     /**
@@ -987,7 +987,7 @@ namespace koi2 {
      */
     //% blockId=koi2_custom_model_init_sd block="from sdCard load model %modelAddr anchor is %anchor"
     //% weight=99 group="Custom"
-    export function custmoModelInitfromSD(modelAddr: string, anchor: number[]): void {
+    export function customModelInitfromSD(modelAddr: string, anchor: number[]): void {
         let anchorStr = ""
         for(let j=0;j<anchor.length;j++){
             anchorStr +=anchor[j].toString()
@@ -1004,7 +1004,7 @@ namespace koi2 {
      */
     //% blockId=koi2_custom_model_init_koi2 block="from koi2 load model %modelAddr anchor is %anchor"
     //% weight=99 group="Custom"
-    export function custmoModelInitfromKoi2(modelAddr: number, anchor: number[]): void {
+    export function customModelInitfromKoi2(modelAddr: number, anchor: number[]): void {
         let anchorStr2 = ""
         for (let k = 0; k < anchor.length; k++) {
             anchorStr2 += anchor[k].toString()
@@ -1018,20 +1018,20 @@ namespace koi2 {
     /**
     * Custom Model Get Position
     */
-    //% block="custom model get %res"
+    //% block="Custom model get %res"
     //% blockId=koi2_custom_model_get_position
     //% weight=60 group="Custom"
-    export function customModelGetPosition(res: GetResult): number {
+    export function CustomModelGetPosition(res: GetResult): number {
         return getResultXYWH(res)
     }
 
     /**
      * Custom Model Get id
      */
-    //% block="custom model get id "
+    //% block="Custom model get id "
     //% blockId=koi2_custom_model_get_number
     //% weight=30 group="Custom"
-    export function customModelGetId(): number {
+    export function CustomModelGetId(): number {
         let id = _className
         if (id == '-1') {
             return -1
