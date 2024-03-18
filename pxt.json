@@ -2,7 +2,7 @@
     "name": "koi2",
     "version": "0.1.0",
     "description": "Extension for Kittenbot KOI2",
-	"license": "MIT",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
         "radio": "*",

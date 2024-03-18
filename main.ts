@@ -4,9 +4,9 @@
 
 namespace koi2 {
 
-    let koiNewEventId = 1228
+    let _koiNewEventId = 1228
     type Evtss = (t1: string, t2: string) => void
-    let mqttDataEvt: Evtss = null
+    let _mqttDataEvt: Evtss = null
     // cached results
     let _className: string = ''
     let _classTarget:string = ''
@@ -416,10 +416,10 @@ namespace koi2 {
                 _posH = parseInt(b[4])
                 _className = b[5]
             } else if (cmd == 3) { // btn
-                control.raiseEvent(koiNewEventId, parseInt(b[1]))
+                control.raiseEvent(_koiNewEventId, parseInt(b[1]))
             } else if (cmd == 55) { // btn
-                if (mqttDataEvt) {
-                    mqttDataEvt(b[1], b[2])
+                if (_mqttDataEvt) {
+                    _mqttDataEvt(b[1], b[2])
                 }
             }
         }
@@ -534,7 +534,7 @@ namespace koi2 {
     //% blockId=koi2_on_button_pressed block="on button |%btn pressed"
     //% weight=98 group="Basic"
     export function onButtonPressed(btn: BTNCmd, handler: () => void) {
-        control.onEvent(koiNewEventId, btn, handler);
+        control.onEvent(_koiNewEventId, btn, handler);
     }
 
 
@@ -1112,6 +1112,6 @@ namespace koi2 {
     export function koi2_mqtt_onread(
         handler: (data: string, topic: string) => void
     ) {
-        mqttDataEvt = handler
+        _mqttDataEvt = handler
     }
 }
