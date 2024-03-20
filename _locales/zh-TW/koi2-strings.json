@@ -45,10 +45,11 @@
     "koi2.codeScanTypeSet|block": "掃碼 設置類型 %codeType",
     "koi2.codeScanPosition|block": "掃碼 獲取位置信息 %res",
     "koi2.codeScanResult|block": "掃碼 獲取掃碼結果",
-    "koi2.custmoModelInitfromSD|block": "自定義模型 從SD卡讀取 %modelAddr 錨點值 %anchor",
-    "koi2.custmoModelInitfromKoi2|block": "自定義模型 從内部讀取 %modelAddr 錨點值 %anchor",
+    "koi2.customModelInitfromSD|block": "自定義模型 從SD卡讀取 %modelAddr 錨點值 %anchor",
+    "koi2.customModelInitfromKoi2|block": "自定義模型 從内部讀取 %modelAddr 錨點值 %anchor",
     "koi2.customModelGetPosition|block": "自定義模型 獲取位置信息 %res",
     "koi2.customModelGetId|block": "自定義模型 獲取目標ID",
+    "koi2.customModelPreset|block": "自定義模型 加載預置模型 %modelAddr",
     "koi2.koi2_join_ap|block": "IoT 連接wifi %ssid %pass",
     "koi2.koi2_mqtt_host|block": "IoT 連接MQTT伺服器 %host 裝置名稱 %cid 端口 %port 用户名 %user 密碼 %pass",
     "koi2.koi2_mqtt_sub|block": "IoT MQTT訂閱MQTT話題 %topic",
@@ -129,5 +130,9 @@
     "koi2.FaceAttrQuantity.smile|block": "微笑",
     "koi2.FaceAttrQuantity.glasses|block": "戴眼鏡",
     "koi2.FaceAttrQuantity.openMouth|block": "張嘴",
-    "koi2.FaceAttrQuantity.male|block": "男性"
+    "koi2.FaceAttrQuantity.male|block": "男性",
+    "koi2.CustomModelMenu.ball|block": "三色球",
+    "koi2.CustomModelMenu.pillar|block": "三色圓柱",
+    "koi2.LCD_Direction.Front|block": "前置",
+    "koi2.LCD_Direction.Back|block": "後置"
 }

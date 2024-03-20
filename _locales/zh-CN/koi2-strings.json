@@ -49,6 +49,7 @@
     "koi2.customModelInitfromKoi2|block": "自定义模型 加载内部模型 %modelAddr 锚点值 %anchor",
     "koi2.customModelGetPosition|block": "自定义模型 获取位置信息 %res",
     "koi2.customModelGetId|block": "自定义模型 获取目标id",
+    "koi2.customModelPreset|block": "自定义模型 加载预置模型 %modelAddr",
     "koi2.koi2_join_ap|block": "iot 连接wifi %ssid %pass",
     "koi2.koi2_mqtt_host|block": "iot 连接服务器 %host 设置名称 %cid 端口 %port 用户名 %user 密码 %pass",
     "koi2.koi2_mqtt_sub|block": "iot 订阅话题 %topic",
@@ -128,6 +129,9 @@
     "koi2.FaceAttrQuantity.smile|block": "微笑",
     "koi2.FaceAttrQuantity.glasses|block": "戴眼镜",
     "koi2.FaceAttrQuantity.openMouth|block": "张嘴",
-    "koi2.FaceAttrQuantity.male|block": "男性"
-
+    "koi2.FaceAttrQuantity.male|block": "男性",
+    "koi2.CustomModelMenu.ball|block": "三色球",
+    "koi2.CustomModelMenu.pillar|block": "三色圆柱",
+    "koi2.LCD_Direction.Front|block": "前置",
+    "koi2.LCD_Direction.Back|block": "后置"
 }

@@ -22,6 +22,8 @@ namespace koi2 {
     let _lineX2: number = -1
     let _lineY2: number = -1
 
+    let _startRead = true
+
     const PortSerial = [
         [SerialPin.P0, SerialPin.P8],
         [SerialPin.P1, SerialPin.P12],
@@ -358,6 +360,17 @@ namespace koi2 {
         male = 5,
     }
 
+    /**
+     * custom model menu
+     */
+    export enum CustomModelMenu{
+        //% block="ball"
+        ball = 0xa20000,
+        //% block="pillar"
+        pillar = 0xab0000,
+    }
+
+
 
     let btnEvent: (btn: number) => void
 
@@ -375,6 +388,7 @@ namespace koi2 {
     //% blockId=koi2_updateData block="koi2 update data"
     //% weight=100 group="Basic"
     export function koi2UpdateData(): void {
+        if (_startRead){
         let a = serial.readLine()
         if (a.charAt(0) == 'K') {
             a = trim(a)
@@ -423,6 +437,7 @@ namespace koi2 {
                 }
             }
         }
+        }
     }
 
     /**
@@ -436,6 +451,17 @@ namespace koi2 {
     //% func.fieldOptions.columns=3
     export function switchFunction(func: FullFunction, iotSwitch: IOTSwitch): void {
         serial.writeLine(`K97 ${func + iotSwitch}`)
+        basic.pause(500)
+        _startRead = false
+        while(1){
+            serial.writeLine("K0")
+            basic.pause(1000)
+            if (serial.readString().includes("K0")) {
+                _startRead = true
+                basic.pause(500)
+                break
+            }
+        }
     }
 
     function getResultXYWH(res: GetResult): number {
@@ -1016,12 +1042,28 @@ namespace koi2 {
     }
 
     /**
+     * Custom Model Preset
+     * @param modelAddr path; eg: 0xab0000
+     */
+    //% blockId=custom_model_preset block="from koi2 load pretrained model %modelAddr"
+    //% weight=99 group="Custom"
+    export function customModelPreset(modelAddr: CustomModelMenu): void {
+        let anchorStr22 = ""
+        if (modelAddr == 0xa20000){
+            anchorStr22 = "1.25,1.25,1.50,1.50,1.72,1.72,1.97,1.97,2.34,2.31"
+        } else if (modelAddr == 0xab0000){
+            anchorStr22 = "1.78,1.97,2.28,2.56,2.69,3.12,3.31,3.78,4.03,4.59"
+        }
+        serial.writeLine(`K87 0 ${modelAddr} ${anchorStr22}`)
+    }
+
+    /**
     * Custom Model Get Position
     */
     //% block="Custom model get %res"
     //% blockId=koi2_custom_model_get_position
     //% weight=60 group="Custom"
-    export function CustomModelGetPosition(res: GetResult): number {
+    export function customModelGetPosition(res: GetResult): number {
         return getResultXYWH(res)
     }
 
@@ -1031,7 +1073,7 @@ namespace koi2 {
     //% block="Custom model get id "
     //% blockId=koi2_custom_model_get_number
     //% weight=30 group="Custom"
-    export function CustomModelGetId(): number {
+    export function customModelGetId(): number {
         let id = _className
         if (id == '-1') {
             return -1
