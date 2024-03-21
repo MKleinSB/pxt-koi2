@@ -22,6 +22,24 @@ namespace koi2 {
     let _lineX2: number = -1
     let _lineY2: number = -1
 
+    let updateTime = input.runningTime()
+
+    function valReset(){
+        let _className: string = ''
+        let _classTarget: string = ''
+        let _classTargetMain: boolean = true
+        let _classSimilarity: number = 0
+        let _faceAttrList: string[] = []
+        let _posX: number = -1
+        let _posY: number = -1
+        let _posW: number = -1
+        let _posH: number = -1
+        let _lineX1: number = -1
+        let _lineY1: number = -1
+        let _lineX2: number = -1
+        let _lineY2: number = -1
+    }
+
     let _startRead = true
 
     const PortSerial = [
@@ -389,54 +407,58 @@ namespace koi2 {
     //% weight=100 group="Basic"
     export function koi2UpdateData(): void {
         if (_startRead){
-        let a = serial.readLine()
-        if (a.charAt(0) == 'K') {
-            a = trim(a)
-            let b = a.slice(1, a.length).split(' ')
-            let cmd = parseInt(b[0])
-            if (cmd == 42) { // feature extraction
-                try{
-                    if (_classTarget == b[1] || _classTargetMain){
-                        _className = b[1]
-                        let result = ""
-                        for (let i = 2; i < b.length; i++) {
-                            result += b[i]
+            if(input.runningTime() - updateTime > 1000){
+                valReset()
+            }      
+            let a = serial.readLine()
+            if (a.charAt(0) == 'K') {
+                updateTime = input.runningTime()
+                a = trim(a)
+                let b = a.slice(1, a.length).split(' ')
+                let cmd = parseInt(b[0])
+                if (cmd == 42) { // feature extraction
+                    try{
+                        if (_classTarget == b[1] || _classTargetMain){
+                            _className = b[1]
+                            let result = ""
+                            for (let i = 2; i < b.length; i++) {
+                                result += b[i]
+                            }
+                            _classSimilarity = parseInt(b[2])
                         }
-                        _classSimilarity = parseInt(b[2])
+                    }catch(e){
+                        
                     }
-                }catch(e){
-                    
-                }
-            } else if (cmd == 34) { // face attr
-                _posX = parseInt(b[1])
-                _posY = parseInt(b[2])
-                _posW = parseInt(b[3])
-                _posH = parseInt(b[4])
-                _faceAttrList = b.slice(5)
-            } else if (cmd == 15) { // color blob tracking
-                _posX = parseInt(b[1])
-                _posY = parseInt(b[2])
-                _posW = parseInt(b[3])
-                _posH = parseInt(b[4])
-            } else if (cmd == 19) { // line follower color
-                _lineX1 = parseInt(b[1])
-                _lineY1 = parseInt(b[2])
-                _lineX2 = parseInt(b[3])
-                _lineY2 = parseInt(b[4])
-            } else if (modelCmd.indexOf(cmd) != -1) { // model cmd
-                _posX = parseInt(b[1])
-                _posY = parseInt(b[2])
-                _posW = parseInt(b[3])
-                _posH = parseInt(b[4])
-                _className = b[5]
-            } else if (cmd == 3) { // btn
-                control.raiseEvent(_koiNewEventId, parseInt(b[1]))
-            } else if (cmd == 55) { // btn
-                if (_mqttDataEvt) {
-                    _mqttDataEvt(b[1], b[2])
+                } else if (cmd == 34) { // face attr
+                    _posX = parseInt(b[1])
+                    _posY = parseInt(b[2])
+                    _posW = parseInt(b[3])
+                    _posH = parseInt(b[4])
+                    _faceAttrList = b.slice(5)
+                } else if (cmd == 15) { // color blob tracking
+                    _posX = parseInt(b[1])
+                    _posY = parseInt(b[2])
+                    _posW = parseInt(b[3])
+                    _posH = parseInt(b[4])
+                } else if (cmd == 19) { // line follower color
+                    _lineX1 = parseInt(b[1])
+                    _lineY1 = parseInt(b[2])
+                    _lineX2 = parseInt(b[3])
+                    _lineY2 = parseInt(b[4])
+                } else if (modelCmd.indexOf(cmd) != -1) { // model cmd
+                    _posX = parseInt(b[1])
+                    _posY = parseInt(b[2])
+                    _posW = parseInt(b[3])
+                    _posH = parseInt(b[4])
+                    _className = b[5]
+                } else if (cmd == 3) { // btn
+                    control.raiseEvent(_koiNewEventId, parseInt(b[1]))
+                } else if (cmd == 55) { // btn
+                    if (_mqttDataEvt) {
+                        _mqttDataEvt(b[1], b[2])
+                    }
                 }
             }
-        }
         }
     }
 
@@ -468,16 +490,12 @@ namespace koi2 {
         let ret = -1
         if (res == GetResult.result_X) {
             ret = _posX
-            _posX = -1
         } else if (res == GetResult.result_Y) {
             ret = _posY
-            _posY = -1
         } else if (res == GetResult.result_W) {
             ret = _posW
-            _posW = -1
         } else if (res == GetResult.result_H) {
             ret = _posH
-            _posH = -1
         }
         return ret
     }
@@ -486,17 +504,14 @@ namespace koi2 {
         let ret2 = -1
         if (res == GetResultXY.result_X) {
             ret2 = _posX
-            _posX = -1
         } else if (res == GetResultXY.result_Y) {
             ret2 = _posY
-            _posY = -1
         }
         return ret2
     }
 
     function getResultClass(): string {
         let ret3 = _className
-        _className = ''
         return ret3
     }
 
@@ -504,16 +519,12 @@ namespace koi2 {
         let ret4 = -1
         if (res == Getline.result_X1) {
             ret4 = _lineX1
-            _lineX1 = -1
         } else if (res == Getline.result_Y1) {
             ret4 = _lineY1
-            _lineY1 = -1
         } else if (res == Getline.result_X2) {
             ret4 = _lineX2
-            _lineX2 = -1
         } else if (res == Getline.result_Y2) {
             ret4 = _lineY2
-            _lineY2 = -1
         }
         return ret4
     }
