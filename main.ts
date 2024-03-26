@@ -1155,7 +1155,7 @@ namespace koi2 {
     export function koi2_mqtt_read() {
         let str3 = `K55`
         serial.writeLine(str3)
-        basic.pause(200)
+        basic.pause(1500)
 
     }
 
