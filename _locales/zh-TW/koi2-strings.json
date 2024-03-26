@@ -54,7 +54,7 @@
     "koi2.koi2_mqtt_host|block": "IoT 連接MQTT伺服器 %host 裝置名稱 %cid 端口 %port 用户名 %user 密碼 %pass",
     "koi2.koi2_mqtt_sub|block": "IoT MQTT訂閱MQTT話題 %topic",
     "koi2.koi2_mqtt_pub|block": "IoT 向MQTT話題 %topic 發布訊息 %data",
-    "koi2.koi2_mqtt_read|block": "IoT 讀取MQTT話題 %topic 的訊息",
+    "koi2.koi2_mqtt_read|block": "IoT 讀取MQTT話題訊息",
     "koi2.koi2_mqtt_onread|block": "IoT 當MQTT話題 收到訊息時",
     "koi2.VOC2012_Object.aeroplane|block": "飛機",
     "koi2.VOC2012_Object.bicycle|block": "單車",

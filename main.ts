@@ -1107,8 +1107,8 @@ namespace koi2 {
      * @param host Mqtt host; eg: iot.kittenbot.cn
      * @param cid Client ID; eg: clientid
      * @param port Host Port; eg: 1883
-     * @param user Username; eg: user
-     * @param pass Password; eg: pass
+     * @param user Username;
+     * @param pass Password;
      */
     //% blockId=koi2_mqtt_host block="Mqtt Host %host| clientID%cid||Port%port User%user Pass%pass"
     //% group="WIFI" weight=46
@@ -1148,13 +1148,12 @@ namespace koi2 {
     }
 
     /**
-     * @param topic Mqtt Read; eg: /topic
+     * @param topic Mqtt Read;
      */
-    //% blockId=koi2_mqtt_read block="Mqtt Read %topic"
+    //% blockId=koi2_mqtt_read block="Mqtt Read"
     //% group="WIFI" weight=43
-    export function koi2_mqtt_read(topic: string) {
-        topic = topic || ''
-        let str3 = `K55 ${topic}`
+    export function koi2_mqtt_read() {
+        let str3 = `K55`
         serial.writeLine(str3)
         basic.pause(200)
 

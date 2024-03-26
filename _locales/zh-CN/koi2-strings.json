@@ -54,7 +54,7 @@
     "koi2.koi2_mqtt_host|block": "iot 连接服务器 %host 设置名称 %cid 端口 %port 用户名 %user 密码 %pass",
     "koi2.koi2_mqtt_sub|block": "iot 订阅话题 %topic",
     "koi2.koi2_mqtt_pub|block": "iot 向话题 %topic 发送消息 %data",
-    "koi2.koi2_mqtt_read|block": "iot 读取话题 %topic 的消息",
+    "koi2.koi2_mqtt_read|block": "iot 读取话题消息",
     "koi2.koi2_mqtt_onread|block": "iot 当收到话题消息",
     "koi2.VOC2012_Object.aeroplane|block": "飞机",
     "koi2.VOC2012_Object.bicycle|block": "自行车",
