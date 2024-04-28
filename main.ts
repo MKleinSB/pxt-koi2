@@ -974,7 +974,7 @@ namespace koi2 {
     //% blockId=koi2_face_mask_is
     //% weight=40 group="Face Mask"
     export function faceMaskIsLetter(maskState: MaskState): boolean {
-        let maskList = ["with-mask", "without-mask"]
+        let maskList = ["without-mask", "with-mask"]
         return getResultClass() == maskList[maskState]
     }
 
