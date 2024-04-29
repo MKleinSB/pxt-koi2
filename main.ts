@@ -57,17 +57,17 @@ namespace koi2 {
     }
 
     export enum LCDDirection {
-        //% block=Front
+        //% block=front
         Front = 0,
-        //% block=Back
+        //% block=back
         Back = 2
     }
 
     let paths = ["/flash/", "/sd/"]
     export enum Location {
-        //% block=Flash
+        //% block=flash
         Flash = 0,
-        //% block=SD
+        //% block=sd
         SD = 1
     }
 
@@ -88,90 +88,90 @@ namespace koi2 {
     }
 
     export enum IOTSwitch {
-        //% block="OFF"
+        //% block="off"
         OFF = 0,
-        //% block="ON"
+        //% block="on"
         ON = 0x80,
     }
 
     let colors = ["255,0,0", "0,255,0", "0,0,255", "255,255,255", "0,0,0"]
     export enum TextColor {
-        //% block="Red"
+        //% block="red"
         Red = 0,
-        //% block="Green"
+        //% block="green"
         Green = 1,
-        //% block="Blue"
+        //% block="blue"
         Blue = 2,
-        //% block="White"
+        //% block="white"
         White = 3,
-        //% block="Block"
+        //% block="block"
         Block = 4,
     }
 
     export enum ColorList {
-        //% block="Red"
+        //% block="red"
         Red = 0,
-        //% block="Blue"
+        //% block="blue"
         Blue = 1,
-        //% block="Custom"
+        //% block="custom"
         Custom = 9,
     }
 
 
     export enum ModelFunction {
-        //% block=NoneMode
+        //% block=noneMode
         NoneMode = 0x0,
-        //% block=TrafficSign
+        //% block=trafficSign
         TrafficSign = 0x1,
-        //% block=ObjectTracking
+        //% block=objectTracking
         ObjectTracking = 0x2,
-        //% block=FaceTracking
+        //% block=faceTracking
         FaceTracking = 0x9,
-        //% block=FaceMask
+        //% block=faceMask
         FaceMask = 0x7,
-        //% block=CustomModel
+        //% block=customModel
         CustomModel = 0x3,
-        //% block=NumberRecognition
+        //% block=numberRecognition
         NumberRecognition = 0x4,
-        //% block=ClassifyImage
+        //% block=classifyImage
         ClassifyImage = 0x5,
-        //% block=LetterRecognition
+        //% block=letterRecognition
         LetterRecognition = 0x6,
-        //% block=ScanCode
+        //% block=scanCode
         ScanCode = 0x100,
     }
 
     export enum CvFunction {
-        //% block=ColorBlobTracking
+        //% block=colorBlobTracking
         ColorBlobTracking = 0x10,
-        //% block=LineFollower
+        //% block=lineFollower
         LineFollower = 0x20,
     }
 
     export enum FullFunction {
-        //% block=NoneMode
+        //% block=noneMode
         NoneMode = 0x0,
-        //% block=TrafficSign
+        //% block=trafficSign
         TrafficSign = 0x1,
-        //% block=ObjectTracking
+        //% block=objectTracking
         ObjectTracking = 0x2,
-        //% block=FaceTracking
+        //% block=faceTracking
         FaceTracking = 0x9,
-        //% block=FaceMask
+        //% block=faceMask
         FaceMask = 0x7,
-        //% block=CustomModel
+        //% block=customModel
         CustomModel = 0x3,
-        //% block=NumberRecognition
+        //% block=numberRecognition
         NumberRecognition = 0x4,
-        //% block=ClassifyImage
+        //% block=classifyImage
         ClassifyImage = 0x5,
-        //% block=LetterRecognition
+        //% block=letterRecognition
         LetterRecognition = 0x6,
-        //% block=ColorBlobTracking
+        //% block=colorBlobTracking
         ColorBlobTracking = 0x10,
-        //% block=LineFollower
+        //% block=lineFollower
         LineFollower = 0x20,
-        //% block=ScanCode
+        //% block=scanCode
         ScanCode = 0x100,
     }
 
@@ -241,19 +241,19 @@ namespace koi2 {
     * Traffic sign Card
     */
     export enum TrafficCard {
-        //% block="U-Turn"
+        //% block="u-turn"
         Around = 0,
-        //% block="Forward"
+        //% block="forward"
         Forward = 1,
-        //% block="Left"
+        //% block="left"
         Left = 2,
-        //% block="Right"
+        //% block="right"
         Right = 3,
-        //% block="Speed Limit 30"
+        //% block="speed Limit 30"
         Limiting30 = 4,
-        //% block="Stop"
+        //% block="stop"
         Stop = 5,
-        //% block="Tunnel"
+        //% block="tunnel"
         Tunnel = 6
     }
 
@@ -314,13 +314,13 @@ namespace koi2 {
     * Result list
     */
     export enum GetResult {
-        //% block="X"
+        //% block="x"
         ResultX = 1,
-        //% block="Y"
+        //% block="y"
         ResultY = 2,
-        //% block="W"
+        //% block="w"
         ResultW = 3,
-        //% block="H"
+        //% block="h"
         ResultH = 4
     }
 
@@ -328,9 +328,9 @@ namespace koi2 {
      * Result XY
      */
     export enum GetResultXY {
-        //% block="X"
+        //% block="x"
         ResultX = 1,
-        //% block="Y"
+        //% block="y"
         ResultY = 2
     }
 
@@ -338,13 +338,13 @@ namespace koi2 {
      * Result line
      */
     export enum Getline {
-        //% block="X1"
+        //% block="x1"
         ResultX1 = 1,
-        //% block="Y1"
+        //% block="y1"
         ResultY1 = 2,
-        //% block="X2"
+        //% block="x2"
         ResultX2 = 3,
-        //% block="Y2"
+        //% block="y2"
         ResultY2 = 4
     }
 
