@@ -534,7 +534,7 @@ namespace koi2 {
     */
     //% blockId=koi2_init_pw block="koi2 init powerbrick|Port %port"
     //% group="Basic" weight=101
-    export function koi2_init_pw(port: SerialPorts): void {
+    export function koi2InitPw(port: SerialPorts): void {
         serial.redirect(PortSerial[port][0], PortSerial[port][1], BaudRate.BaudRate115200);
         serial.setTxBufferSize(64)
         serial.setRxBufferSize(64)
@@ -549,7 +549,7 @@ namespace koi2 {
      */
     //% blockId=koi2_init block="koi2 init tx %tx rx %rx"
     //% weight=101 group="Basic"
-    export function koi2_init(tx: SerialPin, rx: SerialPin): void {
+    export function koi2Init(tx: SerialPin, rx: SerialPin): void {
         serial.redirect(tx, rx, BaudRate.BaudRate115200);
         serial.setTxBufferSize(64)
         serial.setRxBufferSize(64)
@@ -1102,7 +1102,7 @@ namespace koi2 {
      */
     //% blockId=koi2_join_ap block="join ap %ssid %pass"
     //% group="WIFI" weight=50
-    export function koi2_join_ap(ssid: string, pass: string) {
+    export function koi2JoinAp(ssid: string, pass: string) {
         serial.writeLine(`K50 ${ssid} ${pass}`)
         basic.pause(13000)
     }
@@ -1117,7 +1117,7 @@ namespace koi2 {
      */
     //% blockId=koi2_mqtt_host block="mqtt host %host| client id%cid||port%port user%user pass%pass"
     //% group="WIFI" weight=46
-    export function koi2_mqtt_host(
+    export function koi2MqttHost(
         host: string,
         cid: string,
         port: number = 1883,
@@ -1138,7 +1138,7 @@ namespace koi2 {
      */
     //% blockId=koi2_mqtt_sub block="mqtt subscribe %topic"
     //% group="WIFI" weight=45
-    export function koi2_mqtt_sub(topic: string) {
+    export function koi2MqttSub(topic: string) {
         serial.writeLine(`K52 ${topic}`)
         basic.pause(500)
     }
@@ -1150,7 +1150,7 @@ namespace koi2 {
      */
     //% blockId=koi2_mqtt_pub block="mqtt publish %topic %data"
     //% group="WIFI" weight=44
-    export function koi2_mqtt_pub(topic: string, data: string) {
+    export function koi2MqttPub(topic: string, data: string) {
         serial.writeLine(`K53 ${topic} ${data}`)
     }
 
@@ -1160,7 +1160,7 @@ namespace koi2 {
      */
     //% blockId=koi2_mqtt_read block="mqtt read"
     //% group="WIFI" weight=43
-    export function koi2_mqtt_read() {
+    export function koi2MqttRead() {
         let str3 = `K55`
         serial.writeLine(str3)
         basic.pause(1500)
@@ -1171,7 +1171,7 @@ namespace koi2 {
      */
     //% blockId=koi2_mqtt_onread block="on mqtt message"
     //% group="WIFI" weight=42 draggableParameters=reporter
-    export function koi2_mqtt_onread(
+    export function koi2MqttOnread(
         handler: (data: string, topic: string) => void
     ) {
         _mqttDataEvt = handler
