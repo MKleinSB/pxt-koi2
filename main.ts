@@ -82,9 +82,9 @@ namespace koi2 {
 
     export enum CodeTypes {
         //% block="qrcode"
-        A = 0,
+        QRCODE = 0,
         //% block="barcode"
-        B = 1,
+        BARCODE = 1,
     }
 
     export enum IOTSwitch {
@@ -529,7 +529,7 @@ namespace koi2 {
         return ret4
     }
 
-    //% blockId=koi2_init_pw block="KOI2 init powerbrick|Port %port"
+    //% blockId=koi2_init_pw block="koi2 init powerbrick|Port %port"
     //% group="Basic" weight=101
     export function koi2_init_pw(port: SerialPorts): void {
         serial.redirect(PortSerial[port][0], PortSerial[port][1], BaudRate.BaudRate115200);
@@ -544,7 +544,7 @@ namespace koi2 {
      * @param tx Tx pin; eg: SerialPin.P2
      * @param rx Rx pin; eg: SerialPin.P12 
      */
-    //% blockId=koi2_init block="KOI2 init Tx %tx Rx %rx"
+    //% blockId=koi2_init block="koi2 init tx %tx rx %rx"
     //% weight=101 group="Basic"
     export function koi2_init(tx: SerialPin, rx: SerialPin): void {
         serial.redirect(tx, rx, BaudRate.BaudRate115200);
@@ -558,7 +558,7 @@ namespace koi2 {
      * LCD Direction
      * @param dir Direction; eg: 0
      */
-    //% blockId=koi2_lcd_direction block="LCD direction %dir"
+    //% blockId=koi2_lcd_direction block="lcd direction %dir"
     //% weight=99 group="Basic"
     export function lcdDirection(dir: LCD_Direction): void {
         serial.writeLine(`K6 ${dir}`)
@@ -912,7 +912,7 @@ namespace koi2 {
     /**
      * Number Recognition Get Number
      */
-    //% block="number recognition get number "
+    //% block="number recognition get number"
     //% blockId=koi2_number_recognition_get_number 
     //% weight=30 group="Number recognition"
     export function numberRecognitionGetNumber(): number {
@@ -970,7 +970,7 @@ namespace koi2 {
      * Face Mask is
      * @param maskState MaskState; eg: MaskState.0
      */
-    //% block="Face Mask is %maskState ?"
+    //% block="face mask is %maskState ?"
     //% blockId=koi2_face_mask_is
     //% weight=40 group="Face Mask"
     export function faceMaskIsLetter(maskState: MaskState): boolean {
@@ -981,7 +981,7 @@ namespace koi2 {
     /**
     * Face Mask Get Position
     */
-    //% block="Face Mask get %res"
+    //% block="face mask get %res"
     //% blockId=koi2_face_mask_get_position
     //% weight=60 group="Face Mask"
     export function faceMaskGetPosition(res: GetResult): number {
@@ -1001,7 +1001,7 @@ namespace koi2 {
     /**
     * Scan Code Get Position
     */
-    //% block="Scan Code get %res"
+    //% block="scan code get %res"
     //% blockId=koi2_scan_code_position
     //% weight=60 group="Scan Code"
     export function codeScanPosition(res: GetResult): number {
@@ -1011,7 +1011,7 @@ namespace koi2 {
     /**
     * Scan Code Get Result
     */
-    //% block="Scan Code get result"
+    //% block="scan code get result"
     //% blockId=koi2_scan_code_result
     //% weight=60 group="Scan Code"
     export function codeScanResult(): string {
@@ -1022,7 +1022,7 @@ namespace koi2 {
      * Custom Model Init SDCard
      * @param modelAddr path; eg: /sd/ballRGB.kmodel
      */
-    //% blockId=koi2_custom_model_init_sd block="from sdCard load model %modelAddr anchor is %anchor"
+    //% blockId=koi2_custom_model_init_sd block="from sd card load model %modelAddr anchor is %anchor"
     //% weight=99 group="Custom"
     export function customModelInitfromSD(modelAddr: string, anchor: number[]): void {
         let anchorStr = ""
@@ -1071,7 +1071,7 @@ namespace koi2 {
     /**
     * Custom Model Get Position
     */
-    //% block="Custom model get %res"
+    //% block="custom model get %res"
     //% blockId=koi2_custom_model_get_position
     //% weight=60 group="Custom"
     export function customModelGetPosition(res: GetResult): number {
@@ -1081,7 +1081,7 @@ namespace koi2 {
     /**
      * Custom Model Get id
      */
-    //% block="Custom model get id "
+    //% block="custom model get id "
     //% blockId=koi2_custom_model_get_number
     //% weight=30 group="Custom"
     export function customModelGetId(): number {
@@ -1096,7 +1096,7 @@ namespace koi2 {
      * @param ssid SSID; eg: ssid
      * @param pass PASSWORD; eg: password
      */
-    //% blockId=koi2_join_ap block="Join Ap %ssid %pass"
+    //% blockId=koi2_join_ap block="join ap %ssid %pass"
     //% group="WIFI" weight=50
     export function koi2_join_ap(ssid: string, pass: string) {
         serial.writeLine(`K50 ${ssid} ${pass}`)
@@ -1110,7 +1110,7 @@ namespace koi2 {
      * @param user Username;
      * @param pass Password;
      */
-    //% blockId=koi2_mqtt_host block="Mqtt Host %host| clientID%cid||Port%port User%user Pass%pass"
+    //% blockId=koi2_mqtt_host block="mqtt host %host| client id%cid||port%port user%user pass%pass"
     //% group="WIFI" weight=46
     export function koi2_mqtt_host(
         host: string,
@@ -1130,7 +1130,7 @@ namespace koi2 {
     /**
      * @param topic Topic to subscribe; eg: /topic
      */
-    //% blockId=koi2_mqtt_sub block="Mqtt Subscribe %topic"
+    //% blockId=koi2_mqtt_sub block="mqtt subscribe %topic"
     //% group="WIFI" weight=45
     export function koi2_mqtt_sub(topic: string) {
         serial.writeLine(`K52 ${topic}`)
@@ -1141,7 +1141,7 @@ namespace koi2 {
      * @param topic Topic to publish; eg: /topic
      * @param data Data to publish; eg: hello
      */
-    //% blockId=koi2_mqtt_pub block="Mqtt Publish %topic %data"
+    //% blockId=koi2_mqtt_pub block="mqtt publish %topic %data"
     //% group="WIFI" weight=44
     export function koi2_mqtt_pub(topic: string, data: string) {
         serial.writeLine(`K53 ${topic} ${data}`)
@@ -1150,7 +1150,7 @@ namespace koi2 {
     /**
      * @param topic Mqtt Read;
      */
-    //% blockId=koi2_mqtt_read block="Mqtt Read"
+    //% blockId=koi2_mqtt_read block="mqtt read"
     //% group="WIFI" weight=43
     export function koi2_mqtt_read() {
         let str3 = `K55`
