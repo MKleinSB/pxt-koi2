@@ -50,13 +50,13 @@ namespace koi2 {
     ]
     
     export enum SerialPorts {
-        PORT1 = 0,
-        PORT2 = 1,
-        PORT3 = 2,
-        PORT4 = 3,
+        Port1 = 0,
+        Port2 = 1,
+        Port3 = 2,
+        Port4 = 3,
     }
 
-    export enum LCD_Direction {
+    export enum LCDDirection {
         //% block=Front
         Front = 0,
         //% block=Back
@@ -177,13 +177,13 @@ namespace koi2 {
 
     export enum ColorNames {
         //% block=red
-        red = 0,
+        Red = 0,
         //% block=blue
-        blue = 1,
+        Blue = 1,
         //% block=yellow
-        yellow = 2,
+        Yellow = 2,
         //% block=black
-        black = 3,
+        Black = 3,
         //% block="Custom"
         Custom = 4,
     }
@@ -191,50 +191,50 @@ namespace koi2 {
 
 
     /*
-    * VOC2012_Object Card
+    * VOC2012Object Card
     */
 
-    export enum VOC2012_Object {
+    export enum VOC2012Object {
         //% block=aeroplane
-        aeroplane = 0,
+        Aeroplane = 0,
         //% block=bicycle
-        bicycle = 1,
+        Bicycle = 1,
         //% block=bird
-        bird = 2,
+        Bird = 2,
         //% block=boat
-        boat = 3,
+        Boat = 3,
         //% block=bottle
-        bottle = 4,
+        Bottle = 4,
         //% block=bus
-        bus = 5,
+        Bus = 5,
         //% block=car
-        car = 6,
+        Car = 6,
         //% block=cat
-        cat = 7,
+        Cat = 7,
         //% block=chair
-        chair = 8,
+        Chair = 8,
         //% block=cow
-        cow = 9,
+        Cow = 9,
         //% block=diningtable
-        diningtable = 10,
+        Diningtable = 10,
         //% block=dog
-        dog = 11,
+        Dog = 11,
         //% block=horse
-        horse = 12,
+        Horse = 12,
         //% block=motorbike
-        motorbike = 13,
+        Motorbike = 13,
         //% block=person
-        person = 14,
+        Person = 14,
         //% block=pottedplant
-        pottedplant = 15,
+        Pottedplant = 15,
         //% block=sheep
-        sheep = 16,
+        Sheep = 16,
         //% block=sofa
-        sofa = 17,
+        Sofa = 17,
         //% block=train
-        train = 18,
+        Train = 18,
         //% block=tvmonitor
-        tvmonitor = 19,
+        Tvmonitor = 19,
     }
 
     /*
@@ -246,7 +246,7 @@ namespace koi2 {
         //% block="Forward"
         Forward = 1,
         //% block="Left"
-        left = 2,
+        Left = 2,
         //% block="Right"
         Right = 3,
         //% block="Speed Limit 30"
@@ -262,25 +262,25 @@ namespace koi2 {
     */
     export enum NumberCard {
         //% block="0"
-        zero = 0,
+        Zero = 0,
         //% block="1"
-        one = 1,
+        One = 1,
         //% block="2"
-        two = 2,
+        Two = 2,
         //% block="3"
-        three = 3,
+        Three = 3,
         //% block="4"
-        four = 4,
+        Four = 4,
         //% block="5"
-        five = 5,
+        Five = 5,
         //% block="6"
-        six = 6,
+        Six = 6,
         //% block="7"
-        seven = 7,
+        Seven = 7,
         //% block="8"
-        eight = 8,
+        Eight = 8,
         //% block="9"
-        nine = 9
+        Nine = 9
     }
     /**
     * Letter Card
@@ -305,9 +305,9 @@ namespace koi2 {
     */
     export enum MaskState {
         //% block="without-mask"
-        A = 0,
+        Without = 0,
         //% block="with-mask"
-        B = 1
+        With = 1
     }
 
     /**
@@ -315,13 +315,13 @@ namespace koi2 {
     */
     export enum GetResult {
         //% block="X"
-        result_X = 1,
+        ResultX = 1,
         //% block="Y"
-        result_Y = 2,
+        ResultY = 2,
         //% block="W"
-        result_W = 3,
+        ResultW = 3,
         //% block="H"
-        result_H = 4
+        ResultH = 4
     }
 
     /**
@@ -329,9 +329,9 @@ namespace koi2 {
      */
     export enum GetResultXY {
         //% block="X"
-        result_X = 1,
+        ResultX = 1,
         //% block="Y"
-        result_Y = 2
+        ResultY = 2
     }
 
     /**
@@ -339,13 +339,13 @@ namespace koi2 {
      */
     export enum Getline {
         //% block="X1"
-        result_X1 = 1,
+        ResultX1 = 1,
         //% block="Y1"
-        result_Y1 = 2,
+        ResultY1 = 2,
         //% block="X2"
-        result_X2 = 3,
+        ResultX2 = 3,
         //% block="Y2"
-        result_Y2 = 4
+        ResultY2 = 4
     }
 
     /**
@@ -353,13 +353,13 @@ namespace koi2 {
      */
     export enum FaceAttrState {
         //% block="smile"
-        smile = 2,
+        Smile = 2,
         //% block="glasses"
-        glasses = 3,
+        Glasses = 3,
         //% block="openMouth"
-        openMouth = 1,
+        OpenMouth = 1,
         //% block="male"
-        male = 0,
+        Male = 0,
     }
 
     /**
@@ -367,15 +367,15 @@ namespace koi2 {
      */
     export enum FaceAttrQuantity {
         //% block="headcount"
-        headcount = 4,
+        Headcount = 4,
         //% block="smile"
-        smile = 8,
+        Smile = 8,
         //% block="glasses"
-        glasses = 8,
+        Glasses = 8,
         //% block="openMouth"
-        openMouth = 6,
+        OpenMouth = 6,
         //% block="male"
-        male = 5,
+        Male = 5,
     }
 
     /**
@@ -383,9 +383,9 @@ namespace koi2 {
      */
     export enum CustomModelMenu{
         //% block="ball"
-        ball = 0xa20000,
+        Ball = 0xa20000,
         //% block="pillar"
-        pillar = 0xab0000,
+        Pillar = 0xab0000,
     }
 
 
@@ -401,7 +401,7 @@ namespace koi2 {
 
     let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20, 86];
     /**
-     * koi2 update data
+     * Update serial port data
      */
     //% blockId=koi2_updateData block="koi2 update data"
     //% weight=100 group="Basic"
@@ -463,7 +463,7 @@ namespace koi2 {
     }
 
     /**
-    * Switch Function
+    * Set the function of koi2 running
     * @param func Function; eg: NoneMode
     * @param iotSwitch switch; eg: OFF
     */
@@ -488,13 +488,13 @@ namespace koi2 {
 
     function getResultXYWH(res: GetResult): number {
         let ret = -1
-        if (res == GetResult.result_X) {
+        if (res == GetResult.ResultX) {
             ret = _posX
-        } else if (res == GetResult.result_Y) {
+        } else if (res == GetResult.ResultY) {
             ret = _posY
-        } else if (res == GetResult.result_W) {
+        } else if (res == GetResult.ResultW) {
             ret = _posW
-        } else if (res == GetResult.result_H) {
+        } else if (res == GetResult.ResultH) {
             ret = _posH
         }
         return ret
@@ -502,9 +502,9 @@ namespace koi2 {
 
     function getResultXY(res: GetResultXY): number {
         let ret2 = -1
-        if (res == GetResultXY.result_X) {
+        if (res == GetResultXY.ResultX) {
             ret2 = _posX
-        } else if (res == GetResultXY.result_Y) {
+        } else if (res == GetResultXY.ResultY) {
             ret2 = _posY
         }
         return ret2
@@ -517,18 +517,21 @@ namespace koi2 {
 
     function getlineXY(res: Getline): number {
         let ret4 = -1
-        if (res == Getline.result_X1) {
+        if (res == Getline.ResultX1) {
             ret4 = _lineX1
-        } else if (res == Getline.result_Y1) {
+        } else if (res == Getline.ResultY1) {
             ret4 = _lineY1
-        } else if (res == Getline.result_X2) {
+        } else if (res == Getline.ResultX2) {
             ret4 = _lineX2
-        } else if (res == Getline.result_Y2) {
+        } else if (res == Getline.ResultY2) {
             ret4 = _lineY2
         }
         return ret4
     }
 
+    /**
+    * Powerbrick expansion module initialization
+    */
     //% blockId=koi2_init_pw block="koi2 init powerbrick|Port %port"
     //% group="Basic" weight=101
     export function koi2_init_pw(port: SerialPorts): void {
@@ -555,12 +558,12 @@ namespace koi2 {
     }
 
     /**
-     * LCD Direction
+     * Adjust to the actual direction of the camera
      * @param dir Direction; eg: 0
      */
     //% blockId=koi2_lcd_direction block="lcd direction %dir"
     //% weight=99 group="Basic"
-    export function lcdDirection(dir: LCD_Direction): void {
+    export function lcdDirection(dir: LCDDirection): void {
         serial.writeLine(`K6 ${dir}`)
     }
 
@@ -590,7 +593,7 @@ namespace koi2 {
     }
 
     /**
-     * Audio Play
+     * Audio play
      * @param name file name; eg: abc.wav
      */
     //% blockId=koi2_audio_play block="play audio from /sd/%name"
@@ -600,7 +603,7 @@ namespace koi2 {
     }
 
     /**
-     * Audio Record
+     * Audio record
      * @param name file name; eg: abc.wav
      * @param sec duration; eg: 3
      */
@@ -611,7 +614,7 @@ namespace koi2 {
     }
 
     /**
-     * Image Save
+     * Save real-time screenshots
      * @param location path; eg: 0
      * @param name file name; eg: abc.jpg
      */
@@ -622,7 +625,7 @@ namespace koi2 {
     }
 
     /**
-     * Image Display
+     * Image display
      * @param location path; eg: 0
      * @param name file name; eg: abc.jpg
      * @param sec duration; eg: 3
@@ -634,7 +637,7 @@ namespace koi2 {
     }
     
     /**
-     * Text display
+     * Display text
      * @param text show text; eg: hello
      * @param x coord x; eg: 0
      * @param y coord y; eg: 0
@@ -648,7 +651,7 @@ namespace koi2 {
     }
 
     /**
-     * Color Blob Tracking Set Color
+     * Set the color you want to track
      * @param color 
      */
     //% blockId=koi2_color_blob_tracking_set_color block="color blob tracking set color %color"
@@ -659,7 +662,7 @@ namespace koi2 {
     }
 
     /**
-     * Color Blob Tracking Calibrate Color
+     * Calibrated color settings are updated to "Custom"
      */
     //% blockId=koi2_color_blob_tracking_calibrate block="color blob tracking calibrate"
     //% weight=90 group="Color blob tracking"
@@ -668,7 +671,7 @@ namespace koi2 {
     }
 
     /**
-     * Color Blob Tracking Get Result
+     * Color blob tracking get result
      */
     //% blockId=colorTrackingGetPosition block="color blob tracking get result %res"
     //% weight=89 group="Color blob tracking"
@@ -677,7 +680,7 @@ namespace koi2 {
     }
 
     /**
-     * Traffic Sign Is Class
+     * Determine whether the sign type matches
      * @returns class
      */
     //% block="traffic sign is class %tsclass"
@@ -691,7 +694,7 @@ namespace koi2 {
     }
 
     /**
-     * Traffic Sign Get Class
+     * Return type name directly
      * @returns class
      */
     //% block="traffic sign get class"
@@ -704,8 +707,8 @@ namespace koi2 {
     }
 
     /**
-     * Traffic Sign Get Position
-     * @returns position; eg: GetResult.result_X
+     * Return traffic sign coordinates
+     * @returns position; eg: GetResult.ResultX
      */
     //% blockId=koi2_traffic_sign_get_position block="traffic sign get %res"
     //% weight=79 group="Traffic sign"
@@ -714,7 +717,7 @@ namespace koi2 {
     }
 
     /**
-     * Line Follower calibration
+     * Calibrated color settings are updated to "Custom"
      */
     //% blockId=koi2_line_follower_calibration block="line follower calibration"
     //% weight=70 group="Line follower"
@@ -723,7 +726,7 @@ namespace koi2 {
     }
 
     /**
-     * Line Follower Set Key Color
+     * Set the color of the lines to be traced
      * @param color
      */
     //% blockId=koi2_line_follower_set_threshold block="line follower set threshold %key"
@@ -733,7 +736,7 @@ namespace koi2 {
     }
 
     /**
-     * Line Follower Get Position
+     * Returns the coordinates of both ends of the line segment
      * @returns bias x
      */
     //% blockId=koi2_line_follower_get_position block="line follower get %res"
@@ -743,7 +746,7 @@ namespace koi2 {
     }
 
     /**
-    * Face Tracking Get Position 
+    * Return face coordinates, length and width
     */
     //% block="face tracking get %res"
     //% blockId=faceTrackingGetPosition
@@ -753,7 +756,7 @@ namespace koi2 {
     }
 
     /**
-    * Face Tracking Get Quantity
+    * Get quantity related information
     */
     //% block="face tracking get %quantityType quantity"
     //% blockId=koi2_face_tracking_get_quantity
@@ -765,7 +768,7 @@ namespace koi2 {
     }
 
     /**
-    * Face Tracking Get State
+    * Get face-related status information
     */
     //% block="face tracking get state %stateType"
     //% blockId=faceTrackingGetState
@@ -777,19 +780,19 @@ namespace koi2 {
     }
 
     /**
-     * Object Tracking is Class
-     * @param object VOC2012_Object; eg: VOC2012_Object.cat
+     * Determine object type
+     * @param object VOC2012Object; eg: VOC2012Object.cat
      */
     //% block="object tracking is class %object"
     //% blockId=koi2_object_tracking_is_class
     //% weight=50 group="Object tracking"
-    export function objectTrackingIsClass(obj: VOC2012_Object): boolean {
+    export function objectTrackingIsClass(obj: VOC2012Object): boolean {
         let objectList = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
         return _className == objectList[obj]
     }
 
     /**
-     * Object Tracking Get Class
+     * Object tracking get class
      */
     //% block="object tracking get class"
     //% blockId=koi2_object_tracking_get_class
@@ -800,8 +803,8 @@ namespace koi2 {
     }
 
     /**
-     * Object Tracking Get Position
-     * @param axis for x; eg: GetResult.result_X
+     * Return object coordinates, length and width
+     * @param axis for x; eg: GetResult.ResultX
      * @returns position
      */
     //% blockId=koi2_object_tracking_get_position block="object tracking get position %axis"
@@ -811,7 +814,7 @@ namespace koi2 {
     }
 
     /**
-     * Classify Image Reset
+     * Clear study data
      */
     //% blockId=koi2_classify_image_reset block="classify image reset"
     //% weight=40 group="Classifier"
@@ -820,7 +823,7 @@ namespace koi2 {
     }
 
     /**
-     * Classify Image set target
+     * After setting, only this label will be returned no matter what the situation is, which is used to obtain the similarity of labels in different situations.
      * @param name tag; eg: apple
      */
     //% blockId=koi2_classify_image_set_detection_target block="classify image Set detection target %name"
@@ -832,7 +835,7 @@ namespace koi2 {
     }
 
     /**
-     * Classify Image get most similar
+     * Similarity of current results
      */
     //% blockId=koi2_classify_image_get_most_similar block="classify image get most similar "
     //% weight=30 group="Classifier"
@@ -842,7 +845,7 @@ namespace koi2 {
     }
 
     /**
-     * Classify Image Add Tag
+     * Use the current screen as learning data for the specified label
      * @param name tag; eg: apple
      */
     //% blockId=koi2_classify_image_add_tag block="classify image add tag %name"
@@ -852,7 +855,7 @@ namespace koi2 {
     }
 
     /**
-     * Classify Image Get Class
+     * Classify image get class
      * @returns class
      */
     //% blockId=koi2_classify_image_get_class block="classify image get class"
@@ -862,7 +865,7 @@ namespace koi2 {
     }
 
     /**
-     * Classify Image Get Similarity
+     * Classify image get similarity
      * @returns class
      */
     //% blockId=koi2_classify_image_get_similarity block="classify image get similarity"
@@ -876,7 +879,7 @@ namespace koi2 {
 
 
     /**
-     * Classify Image Save
+     * Save training data
      * @param path json to save; eg: model.json
      */
     //% blockId=koi2_classify_image_save block="classify image save model to %location %path"
@@ -887,7 +890,7 @@ namespace koi2 {
     }
 
     /**
-     * Classify Image Load
+     * Read training data
      * @param path json to load; eg: model.json
      */
     //% blockId=koi2_classify_image_load block="classify image load model from %location %path"
@@ -899,7 +902,7 @@ namespace koi2 {
 
 
     /**
-     * Number Recognition is Number
+     * Determine whether numeric results are expected
      * @param number NumberCard; eg: NumberCard.6
      */
     //% block="number recognition number is %number"
@@ -910,7 +913,7 @@ namespace koi2 {
     }
 
     /**
-     * Number Recognition Get Number
+     * Get the number with the largest area in the screen
      */
     //% block="number recognition get number"
     //% blockId=koi2_number_recognition_get_number 
@@ -924,7 +927,7 @@ namespace koi2 {
     }
 
     /**
-    * Number Recognition Get Position
+    * Number recognition, return coordinates, length and width
     */
     //% block="number recognition get %res"
     //% blockId=koi2_number_recognition_get_position
@@ -935,7 +938,7 @@ namespace koi2 {
 
 
     /**
-     * Letter Recognition is Letter
+     * Determine whether the letter is the expected result
      * @param letter LetterCard; eg: LetterCard.6
      */
     //% block="letter recognition letter is %letter ?"
@@ -947,9 +950,9 @@ namespace koi2 {
     }
 
     /**
-     * Letter Recognition Get Letter
+     * Get the letter result with the largest area in the recognized image target
      */
-    //% block="letter recognition get letter "
+    //% block="Get letter coordinates, length and width"
     //% blockId=koi2_letter_recognition_get_letter 
     //% weight=30 group="Letter recognition"
     export function letterRecognitionGetLetter(): string {
@@ -964,10 +967,10 @@ namespace koi2 {
     //% weight=60 group="Letter recognition"
     export function letterRecognitionGetPosition(res: GetResult): number {
         return getResultXYWH(res)
-    }    
+    }
 
     /**
-     * Face Mask is
+     * Check the wearing condition of the mask
      * @param maskState MaskState; eg: MaskState.0
      */
     //% block="face mask is %maskState ?"
@@ -979,7 +982,7 @@ namespace koi2 {
     }
 
     /**
-    * Face Mask Get Position
+    * Get the face coordinates, length and width of the main character
     */
     //% block="face mask get %res"
     //% blockId=koi2_face_mask_get_position
@@ -989,7 +992,7 @@ namespace koi2 {
     }
     
     /**
-    * Scan Code
+    * Set scanning type
     */
     //% block="scan code type %codeType"
     //% blockId=koi2_scan_code_type
@@ -999,7 +1002,7 @@ namespace koi2 {
     }
 
     /**
-    * Scan Code Get Position
+    * Returns the coordinates, length and width of the main target
     */
     //% block="scan code get %res"
     //% blockId=koi2_scan_code_position
@@ -1009,7 +1012,7 @@ namespace koi2 {
     }
 
     /**
-    * Scan Code Get Result
+    * Scan code results
     */
     //% block="scan code get result"
     //% blockId=koi2_scan_code_result
@@ -1019,7 +1022,7 @@ namespace koi2 {
     }
 
     /**
-     * Custom Model Init SDCard
+     * Load custom model from sd card
      * @param modelAddr path; eg: /sd/ballRGB.kmodel
      */
     //% blockId=koi2_custom_model_init_sd block="from sd card load model %modelAddr anchor is %anchor"
@@ -1036,7 +1039,7 @@ namespace koi2 {
     }
 
     /**
-     * Custom Model Init koi2
+     * Load model from within koi
      * @param modelAddr path; eg: 0xa20000
      */
     //% blockId=koi2_custom_model_init_koi2 block="from koi2 load model %modelAddr anchor is %anchor"
@@ -1053,7 +1056,7 @@ namespace koi2 {
     }
 
     /**
-     * Custom Model Preset
+     * Set anchor point value
      * @param modelAddr path; eg: 0xab0000
      */
     //% blockId=custom_model_preset block="from koi2 load pretrained model %modelAddr"
@@ -1069,7 +1072,7 @@ namespace koi2 {
     }
 
     /**
-    * Custom Model Get Position
+    * Returns the coordinates, length and width of the main target
     */
     //% block="custom model get %res"
     //% blockId=koi2_custom_model_get_position
@@ -1079,7 +1082,7 @@ namespace koi2 {
     }
 
     /**
-     * Custom Model Get id
+     * Return primary target id
      */
     //% block="custom model get id "
     //% blockId=koi2_custom_model_get_number
@@ -1093,6 +1096,7 @@ namespace koi2 {
     }
 
     /**
+     * Connect to wifi
      * @param ssid SSID; eg: ssid
      * @param pass PASSWORD; eg: password
      */
@@ -1104,6 +1108,7 @@ namespace koi2 {
     }
 
     /**
+     * Connect to iot server
      * @param host Mqtt host; eg: iot.kittenbot.cn
      * @param cid Client ID; eg: clientid
      * @param port Host Port; eg: 1883
@@ -1128,6 +1133,7 @@ namespace koi2 {
     }
 
     /**
+     * Subscribe to topics
      * @param topic Topic to subscribe; eg: /topic
      */
     //% blockId=koi2_mqtt_sub block="mqtt subscribe %topic"
@@ -1138,6 +1144,7 @@ namespace koi2 {
     }
 
     /**
+     * Push messages to specified topics
      * @param topic Topic to publish; eg: /topic
      * @param data Data to publish; eg: hello
      */
@@ -1148,6 +1155,7 @@ namespace koi2 {
     }
 
     /**
+     * Get topic news
      * @param topic Mqtt Read;
      */
     //% blockId=koi2_mqtt_read block="mqtt read"
@@ -1158,7 +1166,9 @@ namespace koi2 {
         basic.pause(1500)
 
     }
-
+    /**
+     * After receiving the topic message
+     */
     //% blockId=koi2_mqtt_onread block="on mqtt message"
     //% group="WIFI" weight=42 draggableParameters=reporter
     export function koi2_mqtt_onread(
