@@ -4,9 +4,7 @@
     "description": "Extension for Kittenbot KOI2",
     "license": "MIT",
     "dependencies": {
-        "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
         "README.md",
