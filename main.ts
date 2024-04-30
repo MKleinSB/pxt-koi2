@@ -82,9 +82,9 @@ namespace koi2 {
 
     export enum CodeTypes {
         //% block="qrcode"
-        QRCODE = 0,
+        Qrcode = 0,
         //% block="barcode"
-        BARCODE = 1,
+        Barcode = 1,
     }
 
     export enum IOTSwitch {
