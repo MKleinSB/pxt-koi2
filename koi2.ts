@@ -184,7 +184,7 @@ namespace koi2 {
         Yellow = 2,
         //% block=black
         Black = 3,
-        //% block="Custom"
+        //% block="custom"
         Custom = 4,
     }
 
@@ -807,7 +807,8 @@ namespace koi2 {
      * @param axis for x; eg: GetResult.ResultX
      * @returns position
      */
-    //% blockId=koi2_object_tracking_get_position block="object tracking get position %axis"
+    //% block="object tracking get position %axis"
+    //% blockId=koi2_object_tracking_get_position
     //% weight=49 group="Object tracking"
     export function objectTrackingGetPosition(axis: GetResult): number {
         return getResultXYWH(axis)
@@ -816,7 +817,8 @@ namespace koi2 {
     /**
      * Clear study data
      */
-    //% blockId=koi2_classify_image_reset block="classify image reset"
+    //% block="classify image reset"
+    //% blockId=koi2_classify_image_reset
     //% weight=40 group="Classifier"
     export function classifyImageReset(): void {
         serial.writeLine(`K45`)
@@ -952,7 +954,7 @@ namespace koi2 {
     /**
      * Get the letter result with the largest area in the recognized image target
      */
-    //% block="Get letter coordinates, length and width"
+    //% block="get letter coordinates, length and width"
     //% blockId=koi2_letter_recognition_get_letter 
     //% weight=30 group="Letter recognition"
     export function letterRecognitionGetLetter(): string {
