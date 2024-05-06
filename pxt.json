@@ -8,7 +8,7 @@
     },
     "files": [
         "README.md",
-        "main.ts",
+        "koi2.ts",
         "_locales/zh-CN/koi2-strings.json",
         "_locales/zh-TW/koi2-strings.json"
     ],
