@@ -21,7 +21,7 @@
     "koi2.lineFollowerSetThreshold|block": "線條追蹤 設置目標顏色 %key",
     "koi2.lineFollowerGetPosition|block": "線條追蹤 獲取位置信息 %res",
     "koi2.faceTrackingGetPosition|block": "人面屬性追蹤 獲取位置信息 %res",
-    "koi2.faceTrackingGetQuantity|block": "人面屬性追蹤 獲取 %qunantityType 數量 ",
+    "koi2.faceTrackingGetQuantity|block": "人面屬性追蹤 獲取 %qunantityType 的數量",
     "koi2.faceTrackingGetState|block": "人面屬性追蹤 人面為 %stateType",
     "koi2.objectTrackingIsClass|block": "物件追蹤 物件類型為 %object",
     "koi2.objectTrackingGetClass|block": "物件追蹤 獲取物件名稱",

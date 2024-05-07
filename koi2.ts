@@ -486,7 +486,7 @@ namespace koi2 {
         }
     }
 
-    function getResultXYWH(res: GetResult): number {
+    function resultXYWH(res: GetResult): number {
         let ret = -1
         if (res == GetResult.ResultX) {
             ret = _posX
@@ -500,7 +500,7 @@ namespace koi2 {
         return ret
     }
 
-    function getResultXY(res: GetResultXY): number {
+    function resultXY(res: GetResultXY): number {
         let ret2 = -1
         if (res == GetResultXY.ResultX) {
             ret2 = _posX
@@ -510,12 +510,12 @@ namespace koi2 {
         return ret2
     }
 
-    function getResultClass(): string {
+    function resultClass(): string {
         let ret3 = _className
         return ret3
     }
 
-    function getlineXY(res: Getline): number {
+    function lineXY(res: Getline): number {
         let ret4 = -1
         if (res == Getline.ResultX1) {
             ret4 = _lineX1
@@ -676,7 +676,7 @@ namespace koi2 {
     //% blockId=colorTrackingGetPosition block="color blob tracking get result %res"
     //% weight=89 group="Color blob tracking"
     export function colorTrackingGetPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
 
     /**
@@ -713,7 +713,7 @@ namespace koi2 {
     //% blockId=koi2_traffic_sign_get_position block="traffic sign get %res"
     //% weight=79 group="Traffic sign"
     export function trafficSignGetPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
 
     /**
@@ -742,17 +742,17 @@ namespace koi2 {
     //% blockId=koi2_line_follower_get_position block="line follower get %res"
     //% weight=69 group="Line follower"
     export function lineFollowerGetPosition(res: Getline): number {
-        return getlineXY(res)
+        return lineXY(res)
     }
 
     /**
     * Return face coordinates, length and width
     */
     //% block="face tracking get %res"
-    //% blockId=faceTrackingGetPosition
+    //% blockId=koi2_face_tracking_get_position
     //% weight=60 group="Face tracking"
     export function faceTrackingGetPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
 
     /**
@@ -771,7 +771,7 @@ namespace koi2 {
     * Get face-related status information
     */
     //% block="face tracking get state %stateType"
-    //% blockId=faceTrackingGetState
+    //% blockId=koi2_face_tracking_get_state
     //% weight=60 group="Face tracking"
     export function faceTrackingGetState(stateType: FaceAttrState): boolean {
         let state = _faceAttrList[stateType]
@@ -811,7 +811,7 @@ namespace koi2 {
     //% blockId=koi2_object_tracking_get_position
     //% weight=49 group="Object tracking"
     export function objectTrackingGetPosition(axis: GetResult): number {
-        return getResultXYWH(axis)
+        return resultXYWH(axis)
     }
 
     /**
@@ -863,7 +863,7 @@ namespace koi2 {
     //% blockId=koi2_classify_image_get_class block="classify image get class"
     //% weight=38 group="Classifier"
     export function classifyImageGetClass(): string {
-        return getResultClass()
+        return resultClass()
     }
 
     /**
@@ -921,7 +921,7 @@ namespace koi2 {
     //% blockId=koi2_number_recognition_get_number 
     //% weight=30 group="Number recognition"
     export function numberRecognitionGetNumber(): number {
-        let transfer2 = getResultClass()
+        let transfer2 = resultClass()
         if (transfer2 == '') {
             return -1
         }
@@ -935,7 +935,7 @@ namespace koi2 {
     //% blockId=koi2_number_recognition_get_position
     //% weight=60 group="Number recognition"
     export function numberRecognitionGetPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
 
 
@@ -958,7 +958,7 @@ namespace koi2 {
     //% blockId=koi2_letter_recognition_get_letter 
     //% weight=30 group="Letter recognition"
     export function letterRecognitionGetLetter(): string {
-        return getResultClass()
+        return resultClass()
     }
 
     /**
@@ -968,7 +968,7 @@ namespace koi2 {
     //% blockId=koi2_letter_recognition_get_position
     //% weight=60 group="Letter recognition"
     export function letterRecognitionGetPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
 
     /**
@@ -980,7 +980,7 @@ namespace koi2 {
     //% weight=40 group="Face Mask"
     export function faceMaskIsLetter(maskState: MaskState): boolean {
         let maskList = ["without-mask", "with-mask"]
-        return getResultClass() == maskList[maskState]
+        return resultClass() == maskList[maskState]
     }
 
     /**
@@ -990,7 +990,7 @@ namespace koi2 {
     //% blockId=koi2_face_mask_get_position
     //% weight=60 group="Face Mask"
     export function faceMaskGetPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
     
     /**
@@ -1010,7 +1010,7 @@ namespace koi2 {
     //% blockId=koi2_scan_code_position
     //% weight=60 group="Scan Code"
     export function codeScanPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
 
     /**
@@ -1020,7 +1020,7 @@ namespace koi2 {
     //% blockId=koi2_scan_code_result
     //% weight=60 group="Scan Code"
     export function codeScanResult(): string {
-        return getResultClass()
+        return resultClass()
     }
 
     /**
@@ -1080,7 +1080,7 @@ namespace koi2 {
     //% blockId=koi2_custom_model_get_position
     //% weight=60 group="Custom"
     export function customModelGetPosition(res: GetResult): number {
-        return getResultXYWH(res)
+        return resultXYWH(res)
     }
 
     /**
