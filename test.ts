@@ -5,6 +5,9 @@
  */
 
 //1.Most visual modes
+
+//The functions for obtaining coordinates for key events do not need to change with mode switching. 
+//In fact, they all call the same variable.
 input.onButtonPressed(Button.A, function () {
     basic.showString("" + (koi2.faceTrackingGetPosition(koi2.GetResult.ResultX)))
 })
