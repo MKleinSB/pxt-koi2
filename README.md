@@ -16,12 +16,12 @@ Usage: take photo
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    koi2.imageSave(koi2.Location.Falsh, "abc.jpg")
+    koi2.imageSave(koi2.Location.Flash, "abc.jpg")
 })
 input.onButtonPressed(Button.B, function () {
-    koi2.imageDisplay(koi2.Location.Falsh, "abc.jpg", 3)
+    koi2.imageDisplay(koi2.Location.Flash, "abc.jpg", 3)
 })
-koi2.init(SerialPin.P2, SerialPin.P12)
+koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 koi2.switchFunction(koi2.FullFunction.NoneMode, koi2.IOTSwitch.OFF)
 ```
 
@@ -37,7 +37,7 @@ koi2.onButtonPressed(koi2.BTNCmd.B, function () {
 koi2.onButtonPressed(koi2.BTNCmd.A, function () {
     basic.showString("A")
 })
-koi2.init(SerialPin.P2, SerialPin.P12)
+koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 koi2.switchFunction(koi2.FullFunction.NoneMode, koi2.IOTSwitch.OFF)
 ```
 
@@ -62,7 +62,7 @@ input.onButtonPressed(Button.B, function () {
     3
     )
 })
-koi2.init(SerialPin.P2, SerialPin.P12)
+koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 koi2.switchFunction(koi2.FullFunction.NoneMode, koi2.IOTSwitch.OFF)
 ```
 
@@ -70,16 +70,16 @@ Usage: colorBlockTracking
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    koi2.lineFollowerSetThreshold(koi2.ColorNames.red)
+    koi2.lineFollowerSetThreshold(koi2.ColorNames.Red)
 })
 input.onButtonPressed(Button.B, function () {
-    koi2.colorObjectTrackingCalibrate()
-    koi2.colorObjectTrackingSetColor(koi2.ColorList.Custom)
+    koi2.colorTrackingCalibrate()
+    koi2.colorTrackingSetColor(koi2.ColorList.Custom)
 })
-koi2.init(SerialPin.P2, SerialPin.P12)
+koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 koi2.switchFunction(koi2.FullFunction.ColorBlobTracking, koi2.IOTSwitch.OFF)
 basic.forever(function () {
-    basic.showNumber(koi2.colorObjectTrackingGetPosition(koi2.GetResult.result_Y))
+    basic.showNumber(koi2.colorTrackingGetPosition(koi2.GetResult.ResultY))
 })
 ```
 
@@ -87,12 +87,12 @@ Usage: Facial Attributes
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
-    koi2.lcdDirection(koi2.LCD_Direction.Front)
+    koi2.lcdDirection(koi2.LCDDirection.Front)
 })
 input.onButtonPressed(Button.B, function () {
-    koi2.lcdDirection(koi2.LCD_Direction.Back)
+    koi2.lcdDirection(koi2.LCDDirection.Back)
 })
-koi2.init(SerialPin.P2, SerialPin.P12)
+koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 koi2.switchFunction(koi2.FullFunction.FaceTracking, koi2.IOTSwitch.OFF)
 basic.forever(function () {
     if (koi2.faceTrackingGetState(koi2.FaceAttrState.smile)) {
@@ -106,7 +106,7 @@ basic.forever(function () {
 Usage: faceMask
 
 ```blocks
-koi2.init(SerialPin.P2, SerialPin.P12)
+koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 koi2.switchFunction(koi2.FullFunction.FaceMask, koi2.IOTSwitch.OFF)
 basic.forever(function () {
     if (koi2.faceMaskIsLetter(koi2.MaskState.A)) {
