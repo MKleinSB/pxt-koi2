@@ -140,5 +140,6 @@
     "koi2.Location.Flash|block": "内部",
     "koi2.Location.SD|block": "内存卡",
     "koi2.MaskState.With": "佩戴口罩",
-    "koi2.MaskState.Without": "未佩戴口罩"
+    "koi2.MaskState.Without": "未佩戴口罩",
+    "koi2.koi2ShowIpAddress|block": "显示ip地址"
 }
