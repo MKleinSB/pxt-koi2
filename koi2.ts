@@ -1110,6 +1110,20 @@ namespace koi2 {
     }
 
     /**
+     * Display the ip address on the koi screen
+     */
+    //% blockId=koi2_show_ip_address block="show ip address"
+    //% group="WIFI" weight=49
+    export function koi2ShowIpAddress() {
+        let str3 = `K54`
+        serial.writeLine(str3)
+        basic.pause(2000)
+        serial.writeLine(str3)
+        basic.pause(2000)
+
+    }
+
+    /**
      * Connect to iot server
      * @param host Mqtt host; eg: iot.kittenbot.cn
      * @param cid Client ID; eg: clientid
@@ -1157,8 +1171,7 @@ namespace koi2 {
     }
 
     /**
-     * Get topic news
-     * @param topic Mqtt Read;
+     * Request topic message
      */
     //% blockId=koi2_mqtt_read block="mqtt read"
     //% group="WIFI" weight=43
