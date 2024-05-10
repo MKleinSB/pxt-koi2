@@ -50,9 +50,13 @@ namespace koi2 {
     ]
     
     export enum SerialPorts {
+        //% block=port1
         Port1 = 0,
+        //% block=port2
         Port2 = 1,
+        //% block=port3
         Port3 = 2,
+        //% block=port4
         Port4 = 3,
     }
 
@@ -67,7 +71,7 @@ namespace koi2 {
     export enum Location {
         //% block=flash
         Flash = 0,
-        //% block=sd
+        //% block=SD
         SD = 1
     }
 
@@ -119,70 +123,70 @@ namespace koi2 {
 
 
     export enum ModelFunction {
-        //% block=noneMode
+        //% block="none mode"
         NoneMode = 0x0,
-        //% block=trafficSign
+        //% block="traffic sign"
         TrafficSign = 0x1,
-        //% block=objectTracking
+        //% block="object tracking"
         ObjectTracking = 0x2,
-        //% block=faceTracking
+        //% block="face tracking"
         FaceTracking = 0x9,
-        //% block=faceMask
+        //% block="face mask"
         FaceMask = 0x7,
-        //% block=customModel
+        //% block="custom model"
         CustomModel = 0x3,
-        //% block=numberRecognition
+        //% block="number recognition"
         NumberRecognition = 0x4,
-        //% block=classifyImage
+        //% block="classify image"
         ClassifyImage = 0x5,
-        //% block=letterRecognition
+        //% block="letter recognition"
         LetterRecognition = 0x6,
-        //% block=scanCode
+        //% block="scan code"
         ScanCode = 0x100,
     }
 
     export enum CvFunction {
-        //% block=colorBlobTracking
+        //% block="color blob tracking"
         ColorBlobTracking = 0x10,
-        //% block=lineFollower
+        //% block="line follower"
         LineFollower = 0x20,
     }
 
     export enum FullFunction {
-        //% block=noneMode
+        //% block="none mode"
         NoneMode = 0x0,
-        //% block=trafficSign
+        //% block="traffic sign"
         TrafficSign = 0x1,
-        //% block=objectTracking
+        //% block="object tracking"
         ObjectTracking = 0x2,
-        //% block=faceTracking
+        //% block="face tracking"
         FaceTracking = 0x9,
-        //% block=faceMask
+        //% block="face mask"
         FaceMask = 0x7,
-        //% block=customModel
+        //% block="custom model"
         CustomModel = 0x3,
-        //% block=numberRecognition
+        //% block="number recognition"
         NumberRecognition = 0x4,
-        //% block=classifyImage
+        //% block="classify image"
         ClassifyImage = 0x5,
-        //% block=letterRecognition
+        //% block="letter recognition"
         LetterRecognition = 0x6,
-        //% block=colorBlobTracking
+        //% block="color blob tracking"
         ColorBlobTracking = 0x10,
-        //% block=lineFollower
+        //% block="line follower"
         LineFollower = 0x20,
-        //% block=scanCode
+        //% block="scan code"
         ScanCode = 0x100,
     }
 
     export enum ColorNames {
-        //% block=red
+        //% block="red"
         Red = 0,
-        //% block=blue
+        //% block="blue"
         Blue = 1,
-        //% block=yellow
+        //% block="yellow"
         Yellow = 2,
-        //% block=black
+        //% block="black"
         Black = 3,
         //% block="custom"
         Custom = 4,
@@ -195,46 +199,46 @@ namespace koi2 {
     */
 
     export enum VOC2012Object {
-        //% block=aeroplane
+        //% block="aeroplane"
         Aeroplane = 0,
-        //% block=bicycle
+        //% block="bicycle"
         Bicycle = 1,
-        //% block=bird
+        //% block="bird"
         Bird = 2,
-        //% block=boat
+        //% block="boat"
         Boat = 3,
-        //% block=bottle
+        //% block="bottle"
         Bottle = 4,
-        //% block=bus
+        //% block="bus"
         Bus = 5,
-        //% block=car
+        //% block="car"
         Car = 6,
-        //% block=cat
+        //% block="cat"
         Cat = 7,
-        //% block=chair
+        //% block="chair"
         Chair = 8,
-        //% block=cow
+        //% block="cow"
         Cow = 9,
-        //% block=diningtable
-        Diningtable = 10,
-        //% block=dog
+        //% block="dining table"
+        DiningTable = 10,
+        //% block="dog"
         Dog = 11,
-        //% block=horse
+        //% block="horse"
         Horse = 12,
-        //% block=motorbike
+        //% block="motorbike"
         Motorbike = 13,
-        //% block=person
+        //% block="person"
         Person = 14,
-        //% block=pottedplant
-        Pottedplant = 15,
-        //% block=sheep
+        //% block="potted plant"
+        PottedPlant = 15,
+        //% block="sheep"
         Sheep = 16,
-        //% block=sofa
+        //% block="sofa"
         Sofa = 17,
-        //% block=train
+        //% block="train"
         Train = 18,
-        //% block=tvmonitor
-        Tvmonitor = 19,
+        //% block="TV monitor"
+        TVMonitor = 19,
     }
 
     /*
@@ -249,7 +253,7 @@ namespace koi2 {
         Left = 2,
         //% block="right"
         Right = 3,
-        //% block="speed Limit 30"
+        //% block="speed limit 30"
         Limiting30 = 4,
         //% block="stop"
         Stop = 5,
@@ -304,9 +308,9 @@ namespace koi2 {
     * Mask State
     */
     export enum MaskState {
-        //% block="without-mask"
+        //% block="without mask"
         Without = 0,
-        //% block="with-mask"
+        //% block="with mask"
         With = 1
     }
 
@@ -356,7 +360,7 @@ namespace koi2 {
         Smile = 2,
         //% block="glasses"
         Glasses = 3,
-        //% block="openMouth"
+        //% block="open mouth"
         OpenMouth = 1,
         //% block="male"
         Male = 0,
@@ -372,7 +376,7 @@ namespace koi2 {
         Smile = 8,
         //% block="glasses"
         Glasses = 8,
-        //% block="openMouth"
+        //% block="open mouth"
         OpenMouth = 6,
         //% block="male"
         Male = 5,
@@ -532,7 +536,7 @@ namespace koi2 {
     /**
     * Powerbrick expansion module initialization
     */
-    //% blockId=koi2_init_pw block="koi2 init powerbrick|Port %port"
+    //% blockId=koi2_init_pw block="koi2 init powerbrick|port %port"
     //% group="Basic" weight=101
     export function koi2InitPw(port: SerialPorts): void {
         serial.redirect(PortSerial[port][0], PortSerial[port][1], BaudRate.BaudRate115200);
@@ -673,7 +677,7 @@ namespace koi2 {
     /**
      * Color blob tracking get result
      */
-    //% blockId=colorTrackingGetPosition block="color blob tracking get result %res"
+    //% blockId=koi2_color_tracking_get_position block="color blob tracking get result %res"
     //% weight=89 group="Color blob tracking"
     export function colorTrackingGetPosition(res: GetResult): number {
         return resultXYWH(res)
@@ -787,7 +791,7 @@ namespace koi2 {
     //% blockId=koi2_object_tracking_is_class
     //% weight=50 group="Object tracking"
     export function objectTrackingIsClass(obj: VOC2012Object): boolean {
-        let objectList = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
+        let objectList = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dining table", "dog", "horse", "motorbike", "person", "potted plant", "sheep", "sofa", "train", "tvmonitor"]
         return _className == objectList[obj]
     }
 
@@ -828,7 +832,7 @@ namespace koi2 {
      * After setting, only this label will be returned no matter what the situation is, which is used to obtain the similarity of labels in different situations.
      * @param name tag; eg: apple
      */
-    //% blockId=koi2_classify_image_set_detection_target block="classify image Set detection target %name"
+    //% blockId=koi2_classify_image_set_detection_target block="classify image set detection target %name"
     //% weight=30 group="Classifier"
     export function classifyImageSetTarget(name: string): void {
         _classTarget = name
@@ -1061,7 +1065,7 @@ namespace koi2 {
      * Set anchor point value
      * @param modelAddr path; eg: 0xab0000
      */
-    //% blockId=custom_model_preset block="from koi2 load pretrained model %modelAddr"
+    //% blockId=koi2_custom_model_preset block="from koi2 load pretrained model %modelAddr"
     //% weight=99 group="Custom"
     export function customModelPreset(modelAddr: CustomModelMenu): void {
         let anchorStr22 = ""

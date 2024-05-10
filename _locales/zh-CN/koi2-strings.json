@@ -115,7 +115,7 @@
     "koi2.ColorNames.Custom|block": "自定义颜色",
     "koi2.TrafficCard.Around|block": "掉头",
     "koi2.TrafficCard.Forward|block": "前进",
-    "koi2.TrafficCard.left|block": "左转",
+    "koi2.TrafficCard.Left|block": "左转",
     "koi2.TrafficCard.Right|block": "右转",
     "koi2.TrafficCard.Limiting30|block": "限速30",
     "koi2.TrafficCard.Stop|block": "停止",
