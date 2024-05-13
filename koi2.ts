@@ -479,13 +479,21 @@ namespace koi2 {
         serial.writeLine(`K97 ${func + iotSwitch}`)
         basic.pause(500)
         _startRead = false
-        while(1){
-            serial.writeLine("K0")
-            basic.pause(1000)
-            if (serial.readString().includes("K0")) {
+        control.inBackground(function () {
+            while (!_startRead){
+                serial.writeLine("K0")
+                basic.pause(1000)
+            }
+        })
+        while (!_startRead){
+            basic.pause(500)
+            let debugA = serial.readString()
+
+            if (debugA.includes("K0")) {
+                basic.showIcon(IconNames.Yes)
                 _startRead = true
-                basic.pause(500)
-                break
+            }else{
+                basic.showIcon(IconNames.No)
             }
         }
     }

@@ -10,8 +10,7 @@
         "README.md",
         "koi2.ts",
         "_locales/zh-CN/koi2-strings.json",
-        "_locales/zh-TW/koi2-strings.json",
-        "main.py"
+        "_locales/zh-TW/koi2-strings.json"
     ],
     "testFiles": [
         "test.ts"
