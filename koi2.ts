@@ -404,66 +404,66 @@ namespace koi2 {
     }
 
     let modelCmd: number[] = [31, 81, 82, 83, 84, 85, 20, 86];
-    /**
-     * Update serial port data
-     */
-    //% blockId=koi2_updateData block="koi2 update data"
-    //% weight=100 group="Basic"
-    export function koi2UpdateData(): void {
-        if (_startRead){
-            if(input.runningTime() - updateTime > 1000){
-                valReset()
-            }      
-            let a = serial.readLine()
-            if (a.charAt(0) == 'K') {
-                updateTime = input.runningTime()
-                a = trim(a)
-                let b = a.slice(1, a.length).split(' ')
-                let cmd = parseInt(b[0])
-                if (cmd == 42) { // feature extraction
-                    try{
-                        if (_classTarget == b[1] || _classTargetMain){
-                            _className = b[1]
-                            let result = ""
-                            for (let i = 2; i < b.length; i++) {
-                                result += b[i]
-                            }
-                            _classSimilarity = parseInt(b[2])
-                        }
-                    }catch(e){
-                        
+    function koi2UpdateData(): void {
+        control.inBackground(function() {
+            while (1) {
+                if (_startRead) {
+                    if (input.runningTime() - updateTime > 1000) {
+                        valReset()
                     }
-                } else if (cmd == 34) { // face attr
-                    _posX = parseInt(b[1])
-                    _posY = parseInt(b[2])
-                    _posW = parseInt(b[3])
-                    _posH = parseInt(b[4])
-                    _faceAttrList = b.slice(5)
-                } else if (cmd == 15) { // color blob tracking
-                    _posX = parseInt(b[1])
-                    _posY = parseInt(b[2])
-                    _posW = parseInt(b[3])
-                    _posH = parseInt(b[4])
-                } else if (cmd == 19) { // line follower color
-                    _lineX1 = parseInt(b[1])
-                    _lineY1 = parseInt(b[2])
-                    _lineX2 = parseInt(b[3])
-                    _lineY2 = parseInt(b[4])
-                } else if (modelCmd.indexOf(cmd) != -1) { // model cmd
-                    _posX = parseInt(b[1])
-                    _posY = parseInt(b[2])
-                    _posW = parseInt(b[3])
-                    _posH = parseInt(b[4])
-                    _className = b[5]
-                } else if (cmd == 3) { // btn
-                    control.raiseEvent(_koiNewEventId, parseInt(b[1]))
-                } else if (cmd == 55) { // btn
-                    if (_mqttDataEvt) {
-                        _mqttDataEvt(b[1], b[2])
+                    let a = serial.readLine()
+                    if (a.charAt(0) == 'K') {
+                        updateTime = input.runningTime()
+                        a = trim(a)
+                        let b = a.slice(1, a.length).split(' ')
+                        let cmd = parseInt(b[0])
+                        if (cmd == 42) { // feature extraction
+                            try {
+                                if (_classTarget == b[1] || _classTargetMain) {
+                                    _className = b[1]
+                                    let result = ""
+                                    for (let i = 2; i < b.length; i++) {
+                                        result += b[i]
+                                    }
+                                    _classSimilarity = parseInt(b[2])
+                                }
+                            } catch (e) {
+
+                            }
+                        } else if (cmd == 34) { // face attr
+                            _posX = parseInt(b[1])
+                            _posY = parseInt(b[2])
+                            _posW = parseInt(b[3])
+                            _posH = parseInt(b[4])
+                            _faceAttrList = b.slice(5)
+                        } else if (cmd == 15) { // color blob tracking
+                            _posX = parseInt(b[1])
+                            _posY = parseInt(b[2])
+                            _posW = parseInt(b[3])
+                            _posH = parseInt(b[4])
+                        } else if (cmd == 19) { // line follower color
+                            _lineX1 = parseInt(b[1])
+                            _lineY1 = parseInt(b[2])
+                            _lineX2 = parseInt(b[3])
+                            _lineY2 = parseInt(b[4])
+                        } else if (modelCmd.indexOf(cmd) != -1) { // model cmd
+                            _posX = parseInt(b[1])
+                            _posY = parseInt(b[2])
+                            _posW = parseInt(b[3])
+                            _posH = parseInt(b[4])
+                            _className = b[5]
+                        } else if (cmd == 3) { // btn
+                            control.raiseEvent(_koiNewEventId, parseInt(b[1]))
+                        } else if (cmd == 55) { // btn
+                            if (_mqttDataEvt) {
+                                _mqttDataEvt(b[1], b[2])
+                            }
+                        }
                     }
                 }
             }
-        }
+        })
+
     }
 
     /**
@@ -544,6 +544,8 @@ namespace koi2 {
         serial.setRxBufferSize(64)
         serial.readString()
         serial.writeString('\n\n')
+
+        koi2UpdateData()
     }
 
     /**
@@ -559,6 +561,8 @@ namespace koi2 {
         serial.setRxBufferSize(64)
         serial.readString()
         serial.writeString('\n\n')
+
+        koi2UpdateData()
     }
 
     /**

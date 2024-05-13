@@ -26,9 +26,6 @@ koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 //      koi2.FullFunction.LetterRecognition
 //      koi2.FullFunction.ScanCod
 koi2.switchFunction(koi2.FullFunction.FaceTracking, koi2.IOTSwitch.OFF)
-basic.forever(function () {
-    koi2.koi2UpdateData()
-})
 
 //2.ClassifyImage modes
 input.onButtonPressed(Button.A, function () {
@@ -41,9 +38,6 @@ koi2.koi2Init(SerialPin.P2, SerialPin.P12)
 koi2.switchFunction(koi2.FullFunction.ClassifyImage, koi2.IOTSwitch.OFF)
 basic.forever(function () {
     basic.showString(koi2.classifyImageGetClass())
-})
-basic.forever(function () {
-    koi2.koi2UpdateData()
 })
 
 //3.iot model
@@ -67,7 +61,3 @@ koi2.koi2MqttSub("/zzytest")
 basic.forever(function () {
     koi2.koi2MqttRead()
 })
-basic.forever(function () {
-    koi2.koi2UpdateData()
-})
-

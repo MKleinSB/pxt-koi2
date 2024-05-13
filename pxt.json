@@ -10,14 +10,15 @@
         "README.md",
         "koi2.ts",
         "_locales/zh-CN/koi2-strings.json",
-        "_locales/zh-TW/koi2-strings.json"
+        "_locales/zh-TW/koi2-strings.json",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
     ],
     "public": true,
     "targetVersions": {
-        "target": "6.0.26",
+        "target": "6.0.27",
         "targetId": "microbit"
     },
     "supportedTargets": [
