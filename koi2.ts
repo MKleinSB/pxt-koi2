@@ -24,23 +24,24 @@ namespace koi2 {
 
     let updateTime = input.runningTime()
 
+    let _initState = false
+
     function valReset(){
-        let _className: string = ''
-        let _classTarget: string = ''
-        let _classTargetMain: boolean = true
-        let _classSimilarity: number = 0
-        let _faceAttrList: string[] = []
-        let _posX: number = -1
-        let _posY: number = -1
-        let _posW: number = -1
-        let _posH: number = -1
-        let _lineX1: number = -1
-        let _lineY1: number = -1
-        let _lineX2: number = -1
-        let _lineY2: number = -1
+        _className = ''
+        _classTarget = ''
+        _classTargetMain = true
+        _classSimilarity = 0
+        _faceAttrList = []
+        _posX = -1
+        _posY = -1
+        _posW = -1
+        _posH = -1
+        _lineX1 = -1
+        _lineY1 = -1
+        _lineX2 = -1
+        _lineY2 = -1
     }
 
-    let _startRead = true
 
     const PortSerial = [
         [SerialPin.P0, SerialPin.P8],
@@ -407,57 +408,54 @@ namespace koi2 {
     function koi2UpdateData(): void {
         control.inBackground(function() {
             while (1) {
-                if (_startRead) {
-                    if (input.runningTime() - updateTime > 1000) {
-                        valReset()
-                    }
-                    let a = serial.readLine()
-                    if (a.charAt(0) == 'K') {
-                        updateTime = input.runningTime()
-                        a = trim(a)
-                        let b = a.slice(1, a.length).split(' ')
-                        let cmd = parseInt(b[0])
-                        if (cmd == 42) { // feature extraction
-                            try {
-                                if (_classTarget == b[1] || _classTargetMain) {
-                                    _className = b[1]
-                                    let result = ""
-                                    for (let i = 2; i < b.length; i++) {
-                                        result += b[i]
-                                    }
-                                    _classSimilarity = parseInt(b[2])
+                let a = serial.readLine()
+                if (a.charAt(0) == 'K') {
+                    updateTime = input.runningTime()
+                    a = trim(a)
+                    let b = a.slice(1, a.length).split(' ')
+                    let cmd = parseInt(b[0])
+                    if (cmd == 0){
+                        _initState = true
+                    }else if (cmd == 42) { // feature extraction
+                        try {
+                            if (_classTarget == b[1] || _classTargetMain) {
+                                _className = b[1]
+                                let result = ""
+                                for (let i = 2; i < b.length; i++) {
+                                    result += b[i]
                                 }
-                            } catch (e) {
+                                _classSimilarity = parseInt(b[2])
+                            }
+                        } catch (e) {
 
-                            }
-                        } else if (cmd == 34) { // face attr
-                            _posX = parseInt(b[1])
-                            _posY = parseInt(b[2])
-                            _posW = parseInt(b[3])
-                            _posH = parseInt(b[4])
-                            _faceAttrList = b.slice(5)
-                        } else if (cmd == 15) { // color blob tracking
-                            _posX = parseInt(b[1])
-                            _posY = parseInt(b[2])
-                            _posW = parseInt(b[3])
-                            _posH = parseInt(b[4])
-                        } else if (cmd == 19) { // line follower color
-                            _lineX1 = parseInt(b[1])
-                            _lineY1 = parseInt(b[2])
-                            _lineX2 = parseInt(b[3])
-                            _lineY2 = parseInt(b[4])
-                        } else if (modelCmd.indexOf(cmd) != -1) { // model cmd
-                            _posX = parseInt(b[1])
-                            _posY = parseInt(b[2])
-                            _posW = parseInt(b[3])
-                            _posH = parseInt(b[4])
-                            _className = b[5]
-                        } else if (cmd == 3) { // btn
-                            control.raiseEvent(_koiNewEventId, parseInt(b[1]))
-                        } else if (cmd == 55) { // btn
-                            if (_mqttDataEvt) {
-                                _mqttDataEvt(b[1], b[2])
-                            }
+                        }
+                    } else if (cmd == 34) { // face attr
+                        _posX = parseInt(b[1])
+                        _posY = parseInt(b[2])
+                        _posW = parseInt(b[3])
+                        _posH = parseInt(b[4])
+                        _faceAttrList = b.slice(5)
+                    } else if (cmd == 15) { // color blob tracking
+                        _posX = parseInt(b[1])
+                        _posY = parseInt(b[2])
+                        _posW = parseInt(b[3])
+                        _posH = parseInt(b[4])
+                    } else if (cmd == 19) { // line follower color
+                        _lineX1 = parseInt(b[1])
+                        _lineY1 = parseInt(b[2])
+                        _lineX2 = parseInt(b[3])
+                        _lineY2 = parseInt(b[4])
+                    } else if (modelCmd.indexOf(cmd) != -1) { // model cmd
+                        _posX = parseInt(b[1])
+                        _posY = parseInt(b[2])
+                        _posW = parseInt(b[3])
+                        _posH = parseInt(b[4])
+                        _className = b[5]
+                    } else if (cmd == 3) { // btn
+                        control.raiseEvent(_koiNewEventId, parseInt(b[1]))
+                    } else if (cmd == 55) { // btn
+                        if (_mqttDataEvt) {
+                            _mqttDataEvt(b[1], b[2])
                         }
                     }
                 }
@@ -478,23 +476,10 @@ namespace koi2 {
     export function switchFunction(func: FullFunction, iotSwitch: IOTSwitch): void {
         serial.writeLine(`K97 ${func + iotSwitch}`)
         basic.pause(500)
-        _startRead = false
-        control.inBackground(function () {
-            while (!_startRead){
-                serial.writeLine("K0")
-                basic.pause(1000)
-            }
-        })
-        while (!_startRead){
-            basic.pause(500)
-            let debugA = serial.readString()
-
-            if (debugA.includes("K0")) {
-                basic.showIcon(IconNames.Yes)
-                _startRead = true
-            }else{
-                basic.showIcon(IconNames.No)
-            }
+        _initState = false
+        while (!_initState){
+            serial.writeLine("K0")
+            basic.pause(1000)
         }
     }
 
