@@ -768,6 +768,7 @@ namespace koi2 {
     //% blockId=koi2_face_tracking_get_quantity
     //% weight=60 group="Face tracking"
     export function faceTrackingGetQuantity(quantityType:FaceAttrQuantity): number {
+        valReset()
         let quantity = _faceAttrList[quantityType]
         _faceAttrList[quantityType] = "-1"
         return parseInt(quantity)
@@ -780,6 +781,7 @@ namespace koi2 {
     //% blockId=koi2_face_tracking_get_state
     //% weight=60 group="Face tracking"
     export function faceTrackingGetState(stateType: FaceAttrState): boolean {
+        valReset()
         let state = _faceAttrList[stateType]
         _faceAttrList[stateType] = "-1"
         return parseInt(state) == 1
@@ -793,6 +795,7 @@ namespace koi2 {
     //% blockId=koi2_object_tracking_is_class
     //% weight=50 group="Object tracking"
     export function objectTrackingIsClass(obj: VOC2012Object): boolean {
+        valReset()
         let objectList = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dining table", "dog", "horse", "motorbike", "person", "potted plant", "sheep", "sofa", "train", "tvmonitor"]
         return _className == objectList[obj]
     }
@@ -804,6 +807,7 @@ namespace koi2 {
     //% blockId=koi2_object_tracking_get_class
     //% weight=50 group="Object tracking"
     export function objectTrackingGetClass(): string {
+        valReset()
         let ret52 = _className
         return ret52
     }
@@ -817,6 +821,7 @@ namespace koi2 {
     //% blockId=koi2_object_tracking_get_position
     //% weight=49 group="Object tracking"
     export function objectTrackingGetPosition(axis: GetResult): number {
+        valReset()
         return resultXYWH(axis)
     }
 
@@ -869,6 +874,7 @@ namespace koi2 {
     //% blockId=koi2_classify_image_get_class block="classify image get class"
     //% weight=38 group="Classifier"
     export function classifyImageGetClass(): string {
+        valReset()
         return resultClass()
     }
 
@@ -879,6 +885,7 @@ namespace koi2 {
     //% blockId=koi2_classify_image_get_similarity block="classify image get similarity"
     //% weight=29 group="Classifier"
     export function classifyImageGetSimilarity(): number {
+        valReset()
         let deviation = _classSimilarity
         deviation = Math.max(0, Math.min(deviation, 5));
         let similarity = (5 - deviation)/5*100
@@ -917,6 +924,7 @@ namespace koi2 {
     //% blockId=koi2_number_recognition_is_number 
     //% weight=30 group="Number recognition"
     export function numberRecognitionIsNumber(num: NumberCard): boolean {
+        valReset()
         return _className == num.toString()
     }
 
@@ -927,6 +935,7 @@ namespace koi2 {
     //% blockId=koi2_number_recognition_get_number 
     //% weight=30 group="Number recognition"
     export function numberRecognitionGetNumber(): number {
+        valReset()
         let transfer2 = resultClass()
         if (transfer2 == '') {
             return -1
@@ -941,6 +950,7 @@ namespace koi2 {
     //% blockId=koi2_number_recognition_get_position
     //% weight=60 group="Number recognition"
     export function numberRecognitionGetPosition(res: GetResult): number {
+        valReset()
         return resultXYWH(res)
     }
 
@@ -953,6 +963,7 @@ namespace koi2 {
     //% blockId=koi2_letter_recognition_is_letter 
     //% weight=30 group="Letter recognition"
     export function letterRecognitionIsLetter(letter: LetterCard): boolean {
+        valReset()
         let letterList = ["A", "B", "C", "D", "E", "F"]
         return _className == letterList[letter]
     }
@@ -964,6 +975,7 @@ namespace koi2 {
     //% blockId=koi2_letter_recognition_get_letter 
     //% weight=30 group="Letter recognition"
     export function letterRecognitionGetLetter(): string {
+        valReset()
         return resultClass()
     }
 
@@ -974,6 +986,7 @@ namespace koi2 {
     //% blockId=koi2_letter_recognition_get_position
     //% weight=60 group="Letter recognition"
     export function letterRecognitionGetPosition(res: GetResult): number {
+        valReset()
         return resultXYWH(res)
     }
 
@@ -985,6 +998,7 @@ namespace koi2 {
     //% blockId=koi2_face_mask_is
     //% weight=40 group="Face Mask"
     export function faceMaskIsLetter(maskState: MaskState): boolean {
+        valReset()
         let maskList = ["without-mask", "with-mask"]
         return resultClass() == maskList[maskState]
     }
@@ -996,6 +1010,7 @@ namespace koi2 {
     //% blockId=koi2_face_mask_get_position
     //% weight=60 group="Face Mask"
     export function faceMaskGetPosition(res: GetResult): number {
+        valReset()
         return resultXYWH(res)
     }
     
@@ -1016,6 +1031,7 @@ namespace koi2 {
     //% blockId=koi2_scan_code_position
     //% weight=60 group="Scan Code"
     export function codeScanPosition(res: GetResult): number {
+        valReset()
         return resultXYWH(res)
     }
 
@@ -1026,6 +1042,7 @@ namespace koi2 {
     //% blockId=koi2_scan_code_result
     //% weight=60 group="Scan Code"
     export function codeScanResult(): string {
+        valReset()
         return resultClass()
     }
 
@@ -1086,6 +1103,7 @@ namespace koi2 {
     //% blockId=koi2_custom_model_get_position
     //% weight=60 group="Custom"
     export function customModelGetPosition(res: GetResult): number {
+        valReset()
         return resultXYWH(res)
     }
 
@@ -1096,6 +1114,7 @@ namespace koi2 {
     //% blockId=koi2_custom_model_get_number
     //% weight=30 group="Custom"
     export function customModelGetId(): number {
+        valReset()
         let id = _className
         if (id == '-1') {
             return -1
