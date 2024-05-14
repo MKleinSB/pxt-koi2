@@ -27,19 +27,21 @@ namespace koi2 {
     let _initState = false
 
     function valReset(){
-        _className = ''
-        _classTarget = ''
-        _classTargetMain = true
-        _classSimilarity = 0
-        _faceAttrList = []
-        _posX = -1
-        _posY = -1
-        _posW = -1
-        _posH = -1
-        _lineX1 = -1
-        _lineY1 = -1
-        _lineX2 = -1
-        _lineY2 = -1
+        if (input.runningTime() - updateTime > 1000){
+            _className = ''
+            _classTarget = ''
+            _classTargetMain = true
+            _classSimilarity = 0
+            _faceAttrList = []
+            _posX = -1
+            _posY = -1
+            _posW = -1
+            _posH = -1
+            _lineX1 = -1
+            _lineY1 = -1
+            _lineX2 = -1
+            _lineY2 = -1
+        }
     }
 
 
@@ -408,9 +410,9 @@ namespace koi2 {
     function koi2UpdateData(): void {
         control.inBackground(function() {
             while (1) {
+                updateTime = input.runningTime()
                 let a = serial.readLine()
                 if (a.charAt(0) == 'K') {
-                    updateTime = input.runningTime()
                     a = trim(a)
                     let b = a.slice(1, a.length).split(' ')
                     let cmd = parseInt(b[0])
@@ -690,6 +692,7 @@ namespace koi2 {
     //% tsclass.fieldEditor="gridpicker"
     //% tsclass.fieldOptions.columns=2
     export function trafficSignIsClass(tsclass: TrafficCard): boolean {
+        valReset()
         let traffic = ["U-Turn", "forward", "left", "right", "limit-30", "stop", "tunnel"]
         return _className == traffic[tsclass]
     }
@@ -704,6 +707,7 @@ namespace koi2 {
     //% tsclass.fieldEditor="gridpicker"
     //% tsclass.fieldOptions.columns=2
     export function trafficSignGetClass(): string {
+        valReset()
         return _className
     }
 
@@ -714,6 +718,7 @@ namespace koi2 {
     //% blockId=koi2_traffic_sign_get_position block="traffic sign get %res"
     //% weight=79 group="Traffic sign"
     export function trafficSignGetPosition(res: GetResult): number {
+        valReset()
         return resultXYWH(res)
     }
 
