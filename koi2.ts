@@ -596,6 +596,59 @@ namespace koi2 {
     }
 
     /**
+     * Show file list
+     * @param location flash or sd; eg: 0
+     * @param page Twenty items on one page; eg: 1
+     */
+    //% blockId=koi2_display_files block="display %location file list, page number %page"
+    //% weight=99 group="File operations"
+    //% advanced=true
+    export function displayFiles(location: Location, page: number): void {
+        let addr = "/flash"
+        if(location){
+            addr = "/sd"
+        }        
+        serial.writeLine(`K8 ${addr} ${page}`)
+    }
+
+    /**
+     * close display files
+     */
+    //% blockId=koi2_close_display_file block="close display files"
+    //% weight=98 group="File operations"
+    //% advanced=true
+    export function closeDisplayFile(): void {
+        serial.writeLine(`K9`)
+    }
+
+    /**
+     * Delete File;
+     * @param location flash or sd; eg: 0;
+     * @param name file name; eg: abc.jpg
+     */
+    //% blockId=koi2_remove_file block="remove file %location %name"
+    //% weight=97 group="File operations"
+    //% advanced=true
+    export function removeFile(location: Location, name: string): void {
+        serial.writeLine(`K10 ${paths[location] + name}`)
+    }
+
+    /**
+     * Copy File;
+     * @param location1 flash or sd; eg: Location.0;
+     * @param name1 original catalog; eg: abc.jpg;
+     * @param location2 flash or sd; eg: Location.1;
+     * @param name2 target address; eg: abc.jpg;
+     */
+    //% blockId=koi2_copy_file block="copy file %location1 %name1 to %location2 %name2"
+    //% weight=96 group="File operations"
+    //% advanced=true
+    export function copyFile(location1: Location, name1: string, location2: Location, name2: string): void {
+        serial.writeLine(`K11 ${paths[location1] + name1} ${paths[location2] + name2}`)
+    }
+
+
+    /**
      * Audio play
      * @param name file name; eg: abc.wav
      */
