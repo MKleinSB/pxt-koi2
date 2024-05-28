@@ -141,5 +141,9 @@
     "koi2.Location.SD|block": "内存卡",
     "koi2.MaskState.With": "佩戴口罩",
     "koi2.MaskState.Without": "未佩戴口罩",
-    "koi2.koi2ShowIpAddress|block": "顯示ip地址"
+    "koi2.koi2ShowIpAddress|block": "顯示ip地址",
+    "koi2.displayFiles|block": "顯示 %location 文件列表,頁碼 %page",
+    "koi2.closeDisplayFile|block": "關閉文件列表顯示",
+    "koi2.removeFile|block": "刪除文件 %location %name",
+    "koi2.copyFile|block": "複製文件 %location1 %name1 到 %location2 %name2"
 }
