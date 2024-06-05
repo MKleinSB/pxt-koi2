@@ -1,17 +1,14 @@
 {
     "name": "koi2",
-    "version": "0.2.0",
+    "version": "0.2.10",
     "description": "Extension for Kittenbot KOI2",
     "license": "MIT",
     "dependencies": {
-        "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
         "README.md",
-        "main.blocks",
-        "main.ts",
+        "koi2.ts",
         "_locales/zh-CN/koi2-strings.json",
         "_locales/zh-TW/koi2-strings.json"
     ],
@@ -20,7 +17,7 @@
     ],
     "public": true,
     "targetVersions": {
-        "target": "6.0.25",
+        "target": "6.0.28",
         "targetId": "microbit"
     },
     "supportedTargets": [
