@@ -70,6 +70,13 @@ namespace koi2 {
         Back = 2
     }
 
+    export enum LCDMirror {
+        //% block=enable
+        Enable = 1,
+        //% block=disable
+        Disable = 0
+    }
+
     let paths = ["/flash/", "/sd/"]
     export enum Location {
         //% block=flash
@@ -568,6 +575,16 @@ namespace koi2 {
     //% weight=99 group="Basic"
     export function lcdDirection(dir: LCDDirection): void {
         serial.writeLine(`K6 ${dir}`)
+    }
+
+    /**
+     * Whether to set screen mirroring(At least version v4.0.8 is required)
+     * @param enabled mirror; eg: 1
+     */
+    //% blockId=koi2_lcd_mirror block="lcd mirror %enabled"
+    //% weight=99 group="Basic"
+    export function lcdMirror(enabled: LCDMirror): void {
+        serial.writeLine(`K7 ${enabled}`)
     }
 
     /**
